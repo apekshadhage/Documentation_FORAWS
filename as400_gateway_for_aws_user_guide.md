@@ -39,6 +39,8 @@ Below is a sample AWS architecture that includes various services and components
 
 Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
 
+##Prerequisites
+
 ![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
 
 Considering an use case with Salesforce is a source system whenever we create a record in salesforce we use Apex classes in salesforce to fetch the record and push to API gateway since AS400 gateway doesn’t understand the request coming from Salesforce we use Lambda function in between Salesforce and API gateway to format the input in AS400 consumable format.

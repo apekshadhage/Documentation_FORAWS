@@ -32,12 +32,15 @@ The AS400Gateway for AWS provides the REST API to read or write the messages int
 # AWS Reference Architecture
 
 Below is a sample AWS architecture that includes various services and components typically used when implementing cloud integration solution for bidirectional integrations with IBM i based back-end systems.
-![image](https://user-images.githubusercontent.com/88314020/165102475-27d439cc-0451-4ba5-b6fa-b9edd4ac4994.png)
+
+![image](https://user-images.githubusercontent.com/88314020/165104309-cde0f780-ac9d-4512-aad2-bda005bfc01f.png)
+
 
 
 Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
 
-![image](https://user-images.githubusercontent.com/88314020/165102996-8a122f50-2030-48f5-9fb1-a1141c7c86bc.png)
+![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
+
 
 
 # AWS setup guide

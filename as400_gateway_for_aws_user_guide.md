@@ -37,7 +37,8 @@ Below is a sample AWS architecture that includes various services and components
 
 Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
 
-![](RackMultipart20220423-1-c0u157_html_babcd4b037181062.png)
+![image](https://user-images.githubusercontent.com/88314020/165102996-8a122f50-2030-48f5-9fb1-a1141c7c86bc.png)
+
 
 # AWS setup guide
 

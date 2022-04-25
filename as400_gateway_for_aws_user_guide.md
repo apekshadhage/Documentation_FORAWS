@@ -54,7 +54,7 @@ Go to Simple Notification Servicesclick on TopicsCreate Topicselect Typ
 
 **create subscription for sns topic:**
 
-Click on Create Subcriptionselect protocol(e.g. AWS Lambda) Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction). After your subscription is created, you must confirm it.-->set bother properties according(Optional)click on Create Subscription
+Click on Create Subcription&#8594select protocol(e.g. AWS Lambda) Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction). After your subscription is created, you must confirm it.-->set bother properties according(Optional)click on Create Subscription
 
 
 

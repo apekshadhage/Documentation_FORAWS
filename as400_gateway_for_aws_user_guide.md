@@ -41,6 +41,10 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 
 ![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
 
+Considering an use case with Salesforce is a source system whenever we create a record in salesforce we use Apex classes in salesforce to fetch the record and push to API gateway since AS400 gateway doesn’t understand the request coming from Salesforce we use Lambda function in between Salesforce and API gateway to format the input in AS400 consumable format.
+We do necessary operations in AS400 gateway and response will be push to SNS topic Lambda function pick the messages from SNS topic and update response back to the salesforce.
+
+
 
 
 # AWS setup guide

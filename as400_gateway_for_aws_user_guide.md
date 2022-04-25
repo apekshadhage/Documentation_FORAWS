@@ -44,6 +44,20 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 1. Salesforce account
 2. Two lambda functions
 3. SNS topic
+ 
+**Steps to create lambda function in AWS and configure cloudwatch:**
+
+
+**Steps to create SNS topic:**
+
+Go to Simple Notification Servicesclick on TopicsCreate Topicselect Type as standardname e.g (as400Topic)set other properties if you wantclick on create topic.
+
+**create subscription for sns topic:**
+
+Click on Create Subcriptionselect protocol(e.g. AWS Lambda) Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction). After your subscription is created, you must confirm it.-->set bother properties according(Optional)click on Create Subscription
+
+
+
 
 ![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
 

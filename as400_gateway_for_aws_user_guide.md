@@ -169,6 +169,8 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Click on create target group&rarr;choose a target type instances&rarr;give Target Group Name (e.g. TGTForMyVpc)&rarr;select protocol TCP and port 8080&rarr;select      Vpc(MyVpc)&rarr;select health check protocol as TCP&rarr;click on Next&rarr;To register target instances select instances give port and&rarr;click on include all      pendings and&rarr;click on create Target group Click on Load Balancer&rarr;select type Network Load Balancer&rarr;click on create&rarr;name                            (e.g.NLBForMyVpc)&rarr;select scheme (e.g. Internal)&rarr;Ip address Type (e.g. IPV4)&rarr;select VPC (e.g. MyVpc)&rarr;select availability zone&rarr;select public    subnets&rarr;select IPV4 address (Assigned by AWS)&rarr;select protocol TCP with port 8080&rarr;forward it to Target group(e.g. TGTForMyVpc)&rarr;click on create      load Balancer.
 
 10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+     
+     Click on Lambda service&rarr;click on create function&rarr;Choose one of the following options to create your function.(e.g.Author From Scratch)&rarr;provide          name(e.g.InputTransformation)&rarr;select runtime(e.g. java 8 on Amazon Linux 1)&rarr;select architecture(ex.x86_64)&rarr;permissions default&rarr;click on create      function button&rarr;click on upload from&rarr;select .zip or .jar file and upload the jar.
 
 12. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
 
@@ -263,8 +265,6 @@ Following table contains the properties related to protocols requires to be conf
 
 **Use Case**
 
-Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
-
 **Prerequisites for use case:**
 
 1. Salesforce account
@@ -273,10 +273,16 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
  
 **Steps to create lambda function**
 
-Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
+1.Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
 
+Click on Lambda service&rarr;click on create function&rarr;Choose one of the following options to create your function.(e.g.Author From Scratch)&rarr;provide name(e.g. InputTransformation)&rarr;select runtime(e.g. java 8 on Amazon Linux 1)&rarr;select architecture(ex.x86_64)&rarr;permissions default&rarr;click on create function button&rarr;click on upload from&rarr;select .zip or .jar file and upload the jar.
+If wants to test the created Lamda function go to test tab&rarr;create test event provide data and test it
 
-1. **Logs Verification**
+2.Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
+
+Click on Lambda service&rarr;click on create function&rarr;Choose one of the following options to create your function.(e.g.Author From Scratch)&rarr;provide name(e.g. DQSNSEventProcessors)&rarr;select runtime(e.g. java 8 on Amazon Linux 1)&rarr;select architecture(ex.x86_64)&rarr;permissions default&rarr;click on create function button&rarr;click on upload from &rarr;select .zip or .jar file and upload the jar.
+
+**Logs Verification**
   1. Lambda function logs
     1. Search and click on Lambda function from within the AWS console, Lambda dashboard gets displayed
     2. Click on Functions and can see the below available functions
@@ -284,9 +290,9 @@ Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subsc
       2. DQSNSEventProcessor: AS/400 DTA Queue SNS Lambda Integration
     2. To view logs pertaining to Lambda Functions DQSNSEventProcessor
       1. Click on DQSNSEventProcessor, Displays dashboard with configuration, Permission and Monitoring
-      2. Click on Monitoring tab, it shows Monitoring dashboard along with the CloudWatch metrics. Click on View logs in CloudWatch. This is the path where logs can be         found CloudWatch Logs
-
-Log groups /aws/lambda/DQSNSEventProcessor
+      2. Click on Monitoring tab, it shows Monitoring dashboard along with the CloudWatch metrics. Click on View logs in CloudWatch. This is the path where logs can be         found.
+        
+       Log groups /aws/lambda/DQSNSEventProcessor
 
 
 **Steps to create SNS topic:**
@@ -300,6 +306,8 @@ Go to Simple Notification Services&rarr;click on Topics&rarr;Create Topic&rarr;s
 Click on Create Subcription&rarr;select protocol(e.g. AWS Lambda)&rarr;Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction)&rarr;After your subscription is created, you must confirm it.&rarr;set bother properties according(Optional)&rarr;click on Create Subscription
 
 
+
+Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
 
 
 ![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)

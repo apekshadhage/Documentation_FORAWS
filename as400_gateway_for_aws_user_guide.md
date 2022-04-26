@@ -50,7 +50,7 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 
 **Steps to create SNS topic:**
 
-Go to Simple Notification Servicesclick on Topics&rarr;Create Topicselect Type as standard&rarr;name e.g (as400Topic)&rarr;set other properties if you wantclick on create topic.
+Go to Simple Notification Servicesclick on Topics&rarr;Create Topic&rarr;select Type as standard&rarr;name e.g (as400Topic)&rarr;set other properties if you want&rarr;click on create topic.
 
 **create subscription for sns topic:**
 

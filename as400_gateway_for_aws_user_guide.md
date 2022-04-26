@@ -42,7 +42,7 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 **Prerequisites for use case:**
 
 1. Salesforce account
-2. Two lambda functions
+2. Lambda functions
 3. SNS topic
  
 **Steps to create lambda function in AWS and configure cloudwatch:**
@@ -91,13 +91,29 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 1. Login / Sign into AWS Management Console
 2. Create a VPC with couple of subnets. One subnet is configured as public subnet and other is configured as private subnet
-3. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector
-4. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host
-5. Create a Network Load Balance and attach it to bastion host
-6. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
-7. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
-8. Create a VPC link and attach this to NLB
-9. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+   **Steps to create VPC**
+   
+   Click on Services&rarr;VPC&rarr;your VPCs&rarr;click on Create VPC &rarr;give name as MyVPC and select CIDR block as 10.0.0.0/16 and click on create VPC button.
+   
+   You successfully created vpc-0b91b185302d79fea / MyVPC
+   
+   **Steps to create Subnet**
+   
+   Click on Subnets&rarr;click on Create subnet &rarr;select VPC ID as vpc-0b91b185302d79fea (MyVPC)
+   Subnet name is publicsubnet and give availability zone as no preferences and IPV4 CIDR block as 10.0.0.0/24 
+   Click on AddNew subnet button 
+   Name as privatesubnet and give availability zone as no preferences and IPV4 CIDR block as 10.0.1.0/24 
+   
+   You have successfully created 2 subnets: subnet-002169dd0dd057d4f, subnet-02a9384689d068bcb
+
+
+4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector
+5. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host
+6. Create a Network Load Balance and attach it to bastion host
+7. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+8. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+9. Create a VPC link and attach this to NLB
+10. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
 
 1. Login / Sig into AWS Management Console
 2. Choose region from picklist as US East (Ohio)us-east-2

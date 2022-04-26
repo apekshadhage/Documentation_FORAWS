@@ -157,11 +157,14 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     
     Successfully initiated launch of instance (i-0f9569de3565e58e1)
     
+     AS400GatewayForMyVpc – is an EC2 instance and acts as bastion / NAT gateway host, which is part of public subnet under VPC. By default, application starts running      on port 8080.
+     AS400CommonAPiForMyVpc – is an Ec2 instance and hosts the AS400 connector API interfaces.
+    
     **Managing Application Service**
     
      By using tool Putty SSH login to the public EC2 instance Ex.AS400GatewayForMyVpc and then use below command to login to private EC2 instance. 
      **ssh ec2-user@x.x.x.xx**
-
+     
      where x.x.x.xx represents IP address of private EC2 instance where the actual service is hosted.
      once you login to Private EC2 instance (e.g.AS400CommonAPiForMyVpc)successfully Now properties should be updated
      go to /opt/as400-common-api/config/ and edit application-dev.properties file with below properties:
@@ -195,7 +198,8 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Click on create target group&rarr;choose a target type instances&rarr;give Target Group Name (e.g. TGTForMyVpc)&rarr;select protocol TCP and port 8080&rarr;select      Vpc(MyVpc)&rarr;select health check protocol as TCP&rarr;click on Next&rarr;To register target instances select instances give port and&rarr;click on include all      pendings and&rarr;click on create Target group Click on Load Balancer&rarr;select type Network Load Balancer&rarr;click on create&rarr;name                            (e.g.NLBForMyVpc)&rarr;select scheme (e.g. Internal)&rarr;Ip address Type (e.g. IPV4)&rarr;select VPC (e.g. MyVpc)&rarr;select availability zone&rarr;select public    subnets&rarr;select IPV4 address (Assigned by AWS)&rarr;select protocol TCP with port 8080&rarr;forward it to Target group(e.g. TGTForMyVpc)&rarr;click on create      load Balancer.
 
 10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
-11. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+
+12. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
 
     Search and click on Gateway API from AWS services dashboard, shows Gateway API dashboard
     Create new API by clicking on API link on the left side menu, leave some name and continue
@@ -207,6 +211,11 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     All the above Gateway API can be tested with in the configuration editor. Please refer this sample-test-case-payloads.txt for test payloads.
     Once the mapping configuration is done, then Create a Test Stage environment where the API gets deployed.
     click on Action button&rarr;click on Deploy API&rarr;provide name to create stage&rarr;click on Deploy button.
+    Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
+    Click check box next to &quot;AS400 Common API&quot;, Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API           specification, configuration, and testing
+    Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL info    is available.
+    Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
+    
     Testing API Gateway Interfaces in two ways
         1. From within the Gateway API
         2. Externally
@@ -220,8 +229,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 | API Interface Name | Integration Type | Use Proxy Integration | Method | VPC Link | Endpoint URL|
 | --- | --- | --- | --- | --- | --- |
-|/connections|VPC Link|Keep it deselected|POST|Provide VPC link name.<br>In the current implementation, it named as as400-vpclink 
-|http://x.x.x.xx:8080/connections|
+|/connections|VPC Link|Keep it deselected|POST|Provide VPC link name.<br>In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections|
 |/connections/{connection-name}|VPC Link|Keep it deselected|DELETE|Provide VPC link name.<br>In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}|
 | /connections/{connection-name} | VPC Link | Keep it deselected | GET | Provide VPC link name. In the current implementation, it named as as400-vpclink | http://x.x.x.xx:8080/connections/{connection-name}|
 | /connections/{connection-name} | VPC Link | Keep it deselected | PUT | Provide VPC link name. In the current implementation, it named as as400-vpclink | http://x.x.x.xx:8080/connections/{connection-name}|
@@ -260,50 +268,17 @@ http:// x.x.x.xxx:8080/connections/{connection-name}/close |
 1. Create an SNS topic for publishing the received DTAQ events from the DTAQ
 2. Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
 
-
-**Testing existing solution:**
-
-The following text talks about the general approach to be followed for testing the existing solution.
-
-1. Login / Sig into AWS Management Console
-2. Choose region from picklist as US East (Ohio)us-east-2
-3. **Managing EC2 Instances**
-  1. On successful sign in, Search and click on EC2 instances from AWS services dashboard, shows EC2 services dashboard
-  2. Click on Instances under instances from the left side menu
-  3. Start the below instances one after the other through by selecting check mark next to instance name and then click on Instance Start from the Instance State pick list
-    1. as400gateway – is an EC2 instance and acts as bastion / NAT gateway host, which is part of public subnet under VPC. By default, application starts running on port 8080.
-    2. CommonAPIServer – is an Ec2 instance and hosts the AS400 connector API interfaces.
-4. **Managing Service Configuration**
-  1. Application properties can be changed from the file present in this location /opt/as400-common-api/config/application-dev.properties
-5. **Managing AWS API Gateway Interface**
-  1. Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
-  2. Click check box next to &quot;AS400 Common API&quot;, Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API specification, configuration, and testing
-  3. Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL info is available.
-
-Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
-
 1. **Logs Verification**
-  1. CommonAPIServer logs can be verified from this location /var/log/as400-common-api-service.log
-  2. Lambda function logs
+  1. Lambda function logs
     1. Search and click on Lambda function from within the AWS console, Lambda dashboard gets displayed
     2. Click on Functions and can see the below available functions
       1. InputTransformation: Transforms Input json payload to as/400 compatible format
       2. DQSNSEventProcessor: AS/400 DTA Queue SNS Lambda Integration
-    3. To view logs pertaining to Lambda \&gt; Functions \&gt; DQSNSEventProcessor
+    2. To view logs pertaining to Lambda \&gt; Functions \&gt; DQSNSEventProcessor
       1. Click on DQSNSEventProcessor, Displays dashboard with configuration, Permission and Monitoring
       2. Click on Monitoring tab, it shows Monitoring dashboard along with the CloudWatch metrics. Click on &quot;View logs in CloudWatch&quot;. This is the path where logs can be found CloudWatch \&gt; CloudWatch Logs \&gt;
 
 Log groups \&gt; /aws/lambda/DQSNSEventProcessor
-
-1. **Managing Application Service**
-
-By using tool Putty SSH login to the public EC2 instance Ex.AS400Gateway and then use below command to login to private EC2 instance. **ssh ec2-user@x.x.x.xx**
-
-where x.x.x.xx represents IP address of private EC2 instance where the actual service is hosted.
-
-  1. To know the application status: sudo service as400-common-api-service status
-  2. To stop the application: sudo service as400-common-api-service stop
-  3. To start application: sudo service as400-common-api-service start
 
 **License Management:**
 
@@ -325,9 +300,7 @@ Following table contains the properties related to protocols requires to be conf
 
 | **#** | **Protocol Name** | **Properties** |
 | --- | --- | --- |
-| 1 | S3 | s3.bucket=\&lt;path-to-bucket\&gt;<br>s3.region=us-east-2</br><br>s3.accessKey=ENC(\&lt;encrypted-access-key\&gt;)</br><br>s3.secretKey=ENC(\&lt;encrypted-secret-key\&gt;)|
-| 2 | HTTP/HTTPS | http.url=\&lt;url-URL\&gt;<br>http.dir.path=\&lt;license-file-path\&gt;</br><br>http.username=ENC(\&lt;encrypted-user-name\&gt;)</br>http.password=ENC(\&lt;encrypted-pwd\&gt;)
- |
-| 3 | FTP | ftp.host=\&lt;ftp-host\&gt;<br>ftp.dir.path=\&lt;path\&gt;</br><br>ftp.username=ENC(\&lt;encrypted-user-name\&gt;)</br><br>ftp.password=ENC(\&lt;encrypted-pwd\&gt; ) </br>|
-| 4 | FILE/SMB | file.Path=\&lt;path-to-license-file\&gt;
- |
+| 1 | S3 | s3.bucket=path-to-bucket<br>s3.region=us-east-2<br>s3.accessKey=ENC(encrypted-access-key)<br>s3.secretKey=ENC(encrypted-secret-key)|
+| 2 | HTTP/HTTPS | http.url=url-URL<br>http.dir.path=license-file-path<br>http.username=ENC(encrypted-user-name)</br>http.password=ENC(encrypted-pwd)|
+| 3 | FTP | ftp.host=ftp-host<br>ftp.dir.path=path<br>ftp.username=ENC(encrypted-user-name)<br>ftp.password=ENC(encrypted-pwd)
+| 4 | FILE/SMB | file.Path=path-to-license-file|

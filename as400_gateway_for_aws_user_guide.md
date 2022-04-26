@@ -149,12 +149,19 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     
     Successfully initiated launch of instance (i-0cf3ed2965af92b3e)
 
-6. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host
-7. Create a Network Load Balance and attach it to bastion host
-8. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
-9. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
-10. Create a VPC link and attach this to NLB
-11. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+6. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host.
+   
+    **Steps to create EC2 Instance in publicsubnets inside MyVPC**
+    
+    Click on Launch Instance&rarr;give name as AS400GatewayForMyVpc&rarr;select ubuntu or any other os&rarr;select Instance type according to requirement(eg.               t2.micro)&rarr;go with create new key pair option create as .ppk file by selection .ppk option and click on create.(eg.publickey)&rarr;select VPC (eg.                 MyVpc)&rarr;select publicsubnetForMyVpc&rarr;make sure Auto Assign public Ip is enable.&rarr;select existing security group(eg. securityGroupForMyVpc)&rarr;if         requires add storage&rarr;finally click on Launch Instance
+    
+    Successfully initiated launch of instance (i-0f9569de3565e58e1)
+
+8. Create a Network Load Balance and attach it to bastion host
+9. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+10. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+11. Create a VPC link and attach this to NLB
+12. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
 
 1. Login / Sig into AWS Management Console
 2. Choose region from picklist as US East (Ohio)us-east-2

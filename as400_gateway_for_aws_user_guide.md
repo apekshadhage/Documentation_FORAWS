@@ -109,35 +109,35 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    
    **Steps to create Internet Gateway**
    
-  Click on Internet Gateway&rarr;create Internet Gateway&rarr;give name as igwMyVpc&rarr;click on create internet Gateway
-  The following internet gateway was created: igw-08b7822759edbeeee - igwMyVpc. You can now attach to a VPC to enable the VPC to communicate with the internet.
-  Select IGW i.e igwMyVpc&rarr;go to Action tab&rarr;attach to vpc&rarr;select MyVPC and click on attach to vpc
+   Click on Internet Gateway&rarr;create Internet Gateway&rarr;give name as igwMyVpc&rarr;click on create internet Gateway
+   The following internet gateway was created: igw-08b7822759edbeeee - igwMyVpc. You can now attach to a VPC to enable the VPC to communicate with the internet.
+   Select IGW i.e igwMyVpc&rarr;go to Action tab&rarr;attach to vpc&rarr;select MyVPC and click on attach to vpc
   
-  Now we need to define roote to for networks to go to the internet
-  Create 2 route tables 1 is for public subnet and 2nd one for private subnet
+   Now we need to define roote to for networks to go to the internet
+   Create 2 route tables 1 is for public subnet and 2nd one for private subnet
   
   **Steps to create route tables**
   
-  Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
+   Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
   
-  Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
+   Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
   
-  Click on publicroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select publicsubnetForMyVpc&rarr;click on save associations 
+   Click on publicroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select publicsubnetForMyVpc&rarr;click on save associations 
   
-  You have successfully updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
+   You have successfully updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
   
-  Select publicroute&rarr;routs&rarr;edit routes&rarr;add routes&rarr;add 0.0.0.0/0  and target as Internet Gateway 
-  igw-08b7822759edbeeee(MyVpc)&rarr;click on save changes
+   Select publicroute&rarr;routs&rarr;edit routes&rarr;add routes&rarr;add 0.0.0.0/0  and target as Internet Gateway 
+   igw-08b7822759edbeeee(MyVpc)&rarr;click on save changes
   
-  Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
+   Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
 
-  create route table&rarr;give name as privateroute and select vpc i.e MyVpc&rarr;click on create button
+   create route table&rarr;give name as privateroute and select vpc i.e MyVpc&rarr;click on create button
   
-  Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
+   Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
   
-  Click on privateroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select privatesubnetForMyVpc&rarr;click on save associations 
+   Click on privateroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select privatesubnetForMyVpc&rarr;click on save associations 
   
-  You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
+   You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
 
 
 

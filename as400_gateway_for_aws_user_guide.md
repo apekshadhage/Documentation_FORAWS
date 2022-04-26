@@ -212,9 +212,9 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 |/connections/{connection-name}/invoke-program-call/{library-name}/{program-name}|Lambda|-na-|POST|InputTransformation|Lambda Region: us-east-2Name of the Lambda function: InputTransformation|
 |connections/{connection-name}/program-call/{library-name}/{program-name}|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|http://x.x.x.xx:8080/connections/{connection-name}/program-call/{library-name}/{program-name}|
 |/connections/{connection-name}/close|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
-http://x.x.x.xx:8080/connections/{connection-name}/close|
+                                                            http://x.x.x.xx:8080/connections/{connection-name}/close|
 |/connections/{connection-name}/reopen|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
-http://x.x.x.xx:8080/connections/{connection-name}/reopen|
+                                                           http://x.x.x.xx:8080/connections/{connection-name}/reopen|
 
 **Note:** Here x.x.x.xx is the IP address of the EC2 private instance, 8080 is the port on which AS400 Connector Service API is running.
 

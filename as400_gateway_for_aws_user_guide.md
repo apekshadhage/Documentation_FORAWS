@@ -142,7 +142,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
      
      |Key Description|	Key Value|
      |---|---|
-     |AS/400 Server Connection Configuration	|connectionName=test-connection<br>endpoint=as400.infoviewsystems.com<br>userid=MULEDEV<br>password=MULEDEV12<br>libraryList=AWSDEMOS,WTF400DEV<br>secureConnection=false<br>licenseUrl=file:c:/temp/as400-license.lic<br>truststorePassword=ENC(cWuIRE7sMAIFguybAoTBiThjx1onRm5D)<br>tlsIsInsecure=false<br>tlsKeystoreConfigured=true<br>tlsTruststoreConfigured=true<br>licenseFileProtocol=S3<br>truststoreFileProtocol=S3<brsns.topic.arn=arn:aws:sns:us-east-2:390270449620:InfoViewDQTopic<br>aws.accessKey=ENC(2z2fc5logEwsazSIyX4lIHlXnVof5tv806d+CmiuaFk=)<br>aws.secretKey=ENC(qHQgp3CjTku3NJ0HcklsPsgbfj7JMuFvj2ZE/QkHYm5flr0wzgpYPqQCAnhPP+KKYxGbR/z+msk=)<br>aws.region=us-east-2|
+     |AS/400 Server Connection Configuration	|connectionName=test-connection<br>endpoint=as400.infoviewsystems.com<br>userid=MULEDEV<br>password=MULEDEV12<br>libraryList=AWSDEMOS,WTF400DEV<br>secureConnection=false<br>licenseUrl=file:c:/temp/as400-license.lic<br>truststorePassword=ENC(cWuIRE7sMAIFguybAoTBiThjx1onRm5D)<br>tlsIsInsecure=false<br>tlsKeystoreConfigured=true<br>licenseFileProtocol=S3<br>truststoreFileProtocol=S3<br>sns.topic.arn=arn:aws:sns:us-east-2:390270449620:InfoViewDQTopic<br>aws.accessKey=ENC(2z2fc5logEwsazSIyX4lIHlXnVof5tv806d+CmiuaFk=)<br>aws.secretKey=ENC(qHQgp3CjTku3NJ0HcklsPsgbfj7JMuFvj2ZE/QkHYm5flr0wzgpYPqQCAnhPP+KKYxGbR/z+msk=)<br>aws.region=us-east-2|
                                         
 
 
@@ -212,9 +212,9 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 |/connections/{connection-name}/invoke-program-call/{library-name}/{program-name}|Lambda|-na-|POST|InputTransformation|Lambda Region: us-east-2Name of the Lambda function: InputTransformation|
 |connections/{connection-name}/program-call/{library-name}/{program-name}|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|http://x.x.x.xx:8080/connections/{connection-name}/program-call/{library-name}/{program-name}|
 |/connections/{connection-name}/close|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
-                                                            http://x.x.x.xx:8080/connections/{connection-name}/close|
+http://x.x.x.xx:8080/connections/{connection-name}/close|
 |/connections/{connection-name}/reopen|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
-                                                           http://x.x.x.xx:8080/connections/{connection-name}/reopen|
+http://x.x.x.xx:8080/connections/{connection-name}/reopen|
 
 **Note:** Here x.x.x.xx is the IP address of the EC2 private instance, 8080 is the port on which AS400 Connector Service API is running.
 

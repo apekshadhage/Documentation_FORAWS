@@ -50,11 +50,11 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 
 **Steps to create SNS topic:**
 
-Go to Simple Notification Servicesclick on TopicsCreate Topicselect Type as standardname e.g (as400Topic)set other properties if you wantclick on create topic.
+Go to Simple Notification Servicesclick on Topics&rarr;Create Topicselect Type as standard&rarr;name e.g (as400Topic)&rarr;set other properties if you wantclick on create topic.
 
 **create subscription for sns topic:**
 
-Click on Create Subcription&rarr;select protocol(e.g. AWS Lambda&rarr;Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction).&rarr;After your subscription is created, you must confirm it.&rarr;set bother properties according(Optional)&rarr;click on Create Subscription
+Click on Create Subcription&rarr;select protocol(e.g. AWS Lambda)&rarr;Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction)&rarr;After your subscription is created, you must confirm it.&rarr;set bother properties according(Optional)&rarr;click on Create Subscription
 
 
 

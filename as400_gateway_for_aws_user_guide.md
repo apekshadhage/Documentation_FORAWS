@@ -175,8 +175,12 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     Next copy and paste the Swagger collections into the text area, and then click on import
     If everything seems to be ok then we can the below image
     Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
-    To deploy AS400 API 
-    click on Action button&rarr;Deploy API&rarr;create stage and deploy
+    All the above Gateway API can be tested with in the configuration editor. Please refer this sample-test-case-payloads.txt for test payloads.
+    Once the mapping configuration is done, then Create a Test Stage environment where the API gets deployed.
+    click on Action button&rarr;click on Deploy API&rarr;provide name to create stage&rarr;click on Deploy button.
+    Testing API Gateway Interfaces in two ways
+        1. From within the Gateway API
+        2. Externally
     
 
 ![image](https://user-images.githubusercontent.com/88314020/165258740-72c9a19d-9108-414c-810e-139fd6dac32c.png)
@@ -222,14 +226,10 @@ http:// x.x.x.xxx:8080/connections/{connection-name}/close |
 
 **Note:** Here x.x.x.xxx is the IP address of the EC2 public instance, 8080 is the port on which AS400 Connector Service API is running.
 
-1. All the above Gateway API can be tested with in the configuration editor. Please refer this sample-test-case-payloads.txt for test payloads.
-2. Once the mapping configuration is done, then Create a Test Stage environment where the API gets deployed.
 
 1. Create an SNS topic for publishing the received DTAQ events from the DTAQ
 2. Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
-3. Testing API Gateway Interfaces in two ways
-  1. From within the Gateway API
-  2. Externally
+
 
 **Testing existing solution:**
 

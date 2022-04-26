@@ -140,14 +140,21 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
 
 
+4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector.
 
-4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector
-5. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host
-6. Create a Network Load Balance and attach it to bastion host
-7. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
-8. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
-9. Create a VPC link and attach this to NLB
-10. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+   **Steps to create EC2 Instance in privatesubnets inside VPC**
+   
+    Click on Launch Instance&rarr;give name as AS400CommonAPiForMyVpc&rarr;click on My AMIs&rarr;select AS400-common-API ami&rarr;select Instance type according to         requirement(eg.t2.micro)&rarr;go with create new key pair option create as .ppk file by selection .ppk option and click on create.(securedAPI)&rarr;select VPC(eg.     MyVpc)&rarr;select privatesubnetForMyvpc&rarr;make sure Auto Assign  public Ip is Disable.&rarr;select create security group                                           option(eg.securityGroupForMyVpc)&rarr;add description related to security group(Optional)&rarr;(Add All rules which needs to be added to security group)&rarr;
+    if requires add storage&rarr;finally click on Launch Instance
+    
+    Successfully initiated launch of instance (i-0cf3ed2965af92b3e)
+
+6. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host
+7. Create a Network Load Balance and attach it to bastion host
+8. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+9. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+10. Create a VPC link and attach this to NLB
+11. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
 
 1. Login / Sig into AWS Management Console
 2. Choose region from picklist as US East (Ohio)us-east-2

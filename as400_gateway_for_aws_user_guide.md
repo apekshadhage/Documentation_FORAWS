@@ -37,35 +37,6 @@ Below is a sample AWS architecture that includes various services and components
 
 
 
-Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
-
-**Prerequisites for use case:**
-
-1. Salesforce account
-2. Lambda functions
-3. SNS topic
- 
-**Steps to create lambda function in AWS and configure cloudwatch:**
-
-
-**Steps to create SNS topic:**
-
-Go to Simple Notification Services&rarr;click on Topics&rarr;Create Topic&rarr;select Type as standard&rarr;name e.g (as400Topic)&rarr;set other properties if you want&rarr;click on create topic.
-
-**create subscription for sns topic:**
-
-Click on Create Subcription&rarr;select protocol(e.g. AWS Lambda)&rarr;Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction)&rarr;After your subscription is created, you must confirm it.&rarr;set bother properties according(Optional)&rarr;click on Create Subscription
-
-
-
-
-![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
-
-Considering an use case with Salesforce is a source system whenever we create a record in salesforce we use Apex classes in salesforce to fetch the record and push to API gateway since AS400 gateway doesn’t understand the request coming from Salesforce we use Lambda function in between Salesforce and API gateway to format the input in AS400 consumable format.
-We do necessary operations in AS400 gateway and response will be push to SNS topic Lambda function pick the messages from SNS topic and update response back to the salesforce.
-
-
-
 
 # AWS setup guide
 
@@ -265,21 +236,6 @@ http:// x.x.x.xxx:8080/connections/{connection-name}/close |
 **Note:** Here x.x.x.xxx is the IP address of the EC2 public instance, 8080 is the port on which AS400 Connector Service API is running.
 
 
-1. Create an SNS topic for publishing the received DTAQ events from the DTAQ
-2. Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
-
-1. **Logs Verification**
-  1. Lambda function logs
-    1. Search and click on Lambda function from within the AWS console, Lambda dashboard gets displayed
-    2. Click on Functions and can see the below available functions
-      1. InputTransformation: Transforms Input json payload to as/400 compatible format
-      2. DQSNSEventProcessor: AS/400 DTA Queue SNS Lambda Integration
-    2. To view logs pertaining to Lambda \&gt; Functions \&gt; DQSNSEventProcessor
-      1. Click on DQSNSEventProcessor, Displays dashboard with configuration, Permission and Monitoring
-      2. Click on Monitoring tab, it shows Monitoring dashboard along with the CloudWatch metrics. Click on &quot;View logs in CloudWatch&quot;. This is the path where logs can be found CloudWatch \&gt; CloudWatch Logs \&gt;
-
-Log groups \&gt; /aws/lambda/DQSNSEventProcessor
-
 **License Management:**
 
 The IBM i connector requires a license file &quot;as400-license.lic&quot; from Infoview to enable access to specific IBM i system(s).
@@ -304,3 +260,53 @@ Following table contains the properties related to protocols requires to be conf
 | 2 | HTTP/HTTPS | http.url=url-URL<br>http.dir.path=license-file-path<br>http.username=ENC(encrypted-user-name)</br>http.password=ENC(encrypted-pwd)|
 | 3 | FTP | ftp.host=ftp-host<br>ftp.dir.path=path<br>ftp.username=ENC(encrypted-user-name)<br>ftp.password=ENC(encrypted-pwd)
 | 4 | FILE/SMB | file.Path=path-to-license-file|
+
+**Use Case**
+
+Salesforce is used as a sample external system that sends orders to IBM i based ERP and receives order statuses back from the ERP in near real time. Note that most companies will likely have different services and applications used for API management, security policies, token validations, routing and other AWS components interacting with AS400Gateway for AWS.
+
+**Prerequisites for use case:**
+
+1. Salesforce account
+2. Lambda functions
+3. SNS topic
+ 
+**Steps to create lambda function**
+
+Create a Lambda function i.e. DQSNSEventProcessor, deploy (upload Jar) and subscribe to SNS topic
+
+
+1. **Logs Verification**
+  1. Lambda function logs
+    1. Search and click on Lambda function from within the AWS console, Lambda dashboard gets displayed
+    2. Click on Functions and can see the below available functions
+      1. InputTransformation: Transforms Input json payload to as/400 compatible format
+      2. DQSNSEventProcessor: AS/400 DTA Queue SNS Lambda Integration
+    2. To view logs pertaining to Lambda Functions DQSNSEventProcessor
+      1. Click on DQSNSEventProcessor, Displays dashboard with configuration, Permission and Monitoring
+      2. Click on Monitoring tab, it shows Monitoring dashboard along with the CloudWatch metrics. Click on View logs in CloudWatch. This is the path where logs can be         found CloudWatch Logs
+
+Log groups /aws/lambda/DQSNSEventProcessor
+
+
+**Steps to create SNS topic:**
+
+Create an SNS topic for publishing the received DTAQ events from the DTAQ
+
+Go to Simple Notification Services&rarr;click on Topics&rarr;Create Topic&rarr;select Type as standard&rarr;name e.g (as400Topic)&rarr;set other properties if you want&rarr;click on create topic.
+
+**create subscription for sns topic:**
+
+Click on Create Subcription&rarr;select protocol(e.g. AWS Lambda)&rarr;Enter a valid AWS Lambda ARN (for example, arn:aws:lambda:us-east-1:123456789012:function:MyLambdaFunction)&rarr;After your subscription is created, you must confirm it.&rarr;set bother properties according(Optional)&rarr;click on Create Subscription
+
+
+
+
+![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
+
+Considering an use case with Salesforce is a source system whenever we create a record in salesforce we use Apex classes in salesforce to fetch the record and push to API gateway since AS400 gateway doesn’t understand the request coming from Salesforce we use Lambda function in between Salesforce and API gateway to format the input in AS400 consumable format.
+We do necessary operations in AS400 gateway and response will be push to SNS topic Lambda function pick the messages from SNS topic and update response back to the salesforce.
+
+
+
+

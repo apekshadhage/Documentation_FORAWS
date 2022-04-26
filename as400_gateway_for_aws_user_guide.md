@@ -91,6 +91,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 1. Login / Sign into AWS Management Console
 2. Create a VPC with couple of subnets. One subnet is configured as public subnet and other is configured as private subnet
+
    **Steps to create VPC**
    
    Click on Services&rarr;VPC&rarr;your VPCs&rarr;click on Create VPC &rarr;give name as MyVPC and select CIDR block as 10.0.0.0/16 and click on create VPC button.

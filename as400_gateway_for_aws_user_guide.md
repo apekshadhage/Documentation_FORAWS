@@ -158,10 +158,17 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     Successfully initiated launch of instance (i-0f9569de3565e58e1)
 
 8. Create a Network Load Balance and attach it to bastion host
-9. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
-10. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
-11. Create a VPC link and attach this to NLB
-12. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+
+   **Steps to Configure Load Balancer inside MyVpc**
+   
+   To create Network Load Balancer Target group first needs to be created
+   
+   Click on create target group&rarr;choose a target type instances&rarr;give Target Group Name (e.g. TGTForMyVpc)&rarr;select protocol TCP and port 8080&rarr;select      Vpc(MyVpc)&rarr;select health check protocol as TCP&rarr;click on Next&rarr;To register target instances select instances give port and&rarr;click on include all      pendings and&rarr;click on create Target group Click on Load Balancer&rarr;select type Network Load Balancer&rarr;click on create&rarr;name                            (e.g.NLBForMyVpc)&rarr;select scheme (e.g. Internal)&rarr;Ip address Type (e.g. IPV4)&rarr;select VPC (e.g. MyVpc)&rarr;select availability zone&rarr;select public    subnets&rarr;select IPV4 address (Assigned by AWS)&rarr;select protocol TCP with port 8080&rarr;forward it to Target group(e.g. TGTForMyVpc)&rarr;click on create      load Balancer.
+
+10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+11. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+12. Create a VPC link and attach this to NLB
+13. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
 
 1. Login / Sig into AWS Management Console
 2. Choose region from picklist as US East (Ohio)us-east-2

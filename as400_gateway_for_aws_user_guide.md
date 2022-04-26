@@ -106,6 +106,34 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Name as privatesubnet and give availability zone as no preferences and IPV4 CIDR block as 10.0.1.0/24 
    
    You have successfully created 2 subnets: subnet-002169dd0dd057d4f, subnet-02a9384689d068bcb
+   
+   **Steps to create Internet Gateway**
+   
+  Click on Internet Gateway&rarr;create Internet Gateway&rarr;give name as igwMyVpc&rarr;click on create internet Gateway
+  The following internet gateway was created: igw-08b7822759edbeeee - igwMyVpc. You can now attach to a VPC to enable the VPC to communicate with the internet.
+  Select IGW i.e igwMyVpc&rarr;go to Action tab&rarr;attach to vpc&rarr;select MyVPC and click on attach to vpc
+  
+  Now we need to define roote to for networks to go to the internet
+  Create 2 route tables 1 is for public subnet and 2nd one for private subnet
+  
+  **Steps to create route tables**
+  
+  Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
+  Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
+  
+  Click on publicroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select publicsubnetForMyVpc&rarr;click on save associations 
+  You have successfully updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
+  
+  Select publicroute&rarr;routs&rarr;edit routes&rarr;add routes&rarr;add 0.0.0.0/0  and target as Internet Gateway 
+  igw-08b7822759edbeeee(MyVpc)&rarr;click on save changes
+  Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
+
+  create route table&rarr;give name as privateroute and select vpc i.e MyVpc&rarr;click on create button
+  Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
+  
+  Click on privateroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select privatesubnetForMyVpc&rarr;click on save associations 
+  You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
+
 
 
 4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector

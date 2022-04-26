@@ -202,18 +202,18 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 | API Interface Name | Integration Type | Use Proxy Integration | Method | VPC Link | Endpoint URL|
 | --- | --- | --- | --- | --- | --- |
-|/connections|VPC Link|Keep it deselected|POST|Provide VPC link name.<br>In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections|
-|/connections/{connection-name}|VPC Link|Keep it deselected|DELETE|Provide VPC link name.<br>In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}|
-| /connections/{connection-name} | VPC Link | Keep it deselected | GET | Provide VPC link name. In the current implementation, it named as as400-vpclink | http://x.x.x.xx:8080/connections/{connection-name}|
-| /connections/{connection-name} | VPC Link | Keep it deselected | PUT | Provide VPC link name. In the current implementation, it named as as400-vpclink | http://x.x.x.xx:8080/connections/{connection-name}|
-| /connections/{connection-name}/command | VPC Link | Keep it deselected | POST | Provide VPC link name. In the current implementation, it named as as400-vpclink | http://x.x.x.xx:8080/connections/{connection-name}/command-call|
-| /connections/{connection-name}/data-queue/{library-name}/{data-queue-name} | VPC Link | Keep it deselected | GET | Provide VPC link name. In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|
-| /connections/{connection-name}/data-queue/{library-name}/{data-queue-name} | VPC Link | Keep it deselected | POST | Provide VPC link name. In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|
-| /connections/{connection-name}/invoke-program-call/{library-name}/{program-name} | Lambda | -na- | POST | InputTransformation | Lambda Region: us-east-2Name of the Lambda function: InputTransformation |
-| connections/{connection-name}/program-call/{library-name}/{program-name} | VPC Link | Keep it deselected | POST | Provide VPC link name. In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections/{connection-name}/program-call/{library-name}/{program-name}|
-| /connections/{connection-name}/close | VPC Link | Keep it deselected | POST | Provide VPC link name. In the current implementation, it named as as400-vpclink |
+|/connections|VPC Link|Keep it deselected|POST|Provide VPC link name.In the current implementation, it named as as400-vpclink |http://x.x.x.xx:8080/connections|
+|/connections/{connection-name}|VPC Link|Keep it deselected|DELETE|Provide VPC link name.In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}|
+|/connections/{connection-name}|VPC Link|Keep it deselected|GET|Provide VPC link name. In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}|
+|/connections/{connection-name}|VPC Link|Keep it deselected|PUT|Provide VPC link name. In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}|
+|/connections/{connection-name}/command|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink| http://x.x.x.xx:8080/connections/{connection-name}/command-call|
+|/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|VPC Link|Keep it deselected|GET|Provide VPC link name. In the current implementation, it named as as400-vpclink|http://x.x.x.xx:8080/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|
+|/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|http://x.x.x.xx:8080/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}|
+|/connections/{connection-name}/invoke-program-call/{library-name}/{program-name}|Lambda|-na-|POST|InputTransformation|Lambda Region: us-east-2Name of the Lambda function: InputTransformation|
+|connections/{connection-name}/program-call/{library-name}/{program-name}|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|http://x.x.x.xx:8080/connections/{connection-name}/program-call/{library-name}/{program-name}|
+|/connections/{connection-name}/close|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
 http://x.x.x.xx:8080/connections/{connection-name}/close|
-| /connections/{connection-name}/reopen | VPC Link | Keep it deselected | POST | Provide VPC link name. In the current implementation, it named as as400-vpclink |
+|/connections/{connection-name}/reopen|VPC Link|Keep it deselected|POST|Provide VPC link name. In the current implementation, it named as as400-vpclink|
 http://x.x.x.xx:8080/connections/{connection-name}/reopen|
 
 **Note:** Here x.x.x.xx is the IP address of the EC2 private instance, 8080 is the port on which AS400 Connector Service API is running.
@@ -222,7 +222,7 @@ http://x.x.x.xx:8080/connections/{connection-name}/reopen|
 
 | API Interface Name | Integration Type | Use Proxy Integration | Method | Endpoint URL|
 | --- | --- | --- | --- | --- |
-| /connections | HTTP | Keep it deselected | POST | [http://x.x.x.xxx:8080/connections](http://x.x.x.xxx:8080/connections) |
+|/connections | HTTP | Keep it deselected | POST | [http://x.x.x.xxx:8080/connections](http://x.x.x.xxx:8080/connections) |
 | /connections/{connection-name} | HTTP | Keep it deselected | DELETE | [http://x.x.x.xxx:8080/connections/{connection-name}](http://10.0.1.233:8080/connections/%7Bconnection-name%7D) |
 | /connections/{connection-name} | HTTP | Keep it deselected | GET | [http://x.x.x.xxx:8080/connections/{connection-name}](http://10.0.1.233:8080/connections/%7Bconnection-name%7D) |
 | /connections/{connection-name} | HTTP | Keep it deselected | PUT | [http://x.x.x.xxx:8080/connections/{connection-name}](http://10.0.1.233:8080/connections/%7Bconnection-name%7D) |

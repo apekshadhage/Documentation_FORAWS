@@ -168,33 +168,36 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
      
      |Key Description|	Key Value|
      |---|---|
-     |AS/400 Server Connection Configuration	|connectionName=test-connection|
-                                        |endpoint=as400.infoviewsystems.com|
-                                        |userid=MULEDEV|
-                                        |password=MULEDEV12|
-                                        |libraryList=AWSDEMOS,WTF400DEV|
-                                        |secureConnection=false|
-                                        |licenseUrl=file:c:/temp/as400-license.lic|
-                                        |truststorePassword=ENC(cWuIRE7sMAIFguybAoTBiThjx1onRm5D)|
-                                        |tlsIsInsecure=false|
-                                        |tlsKeystoreConfigured=true|
-                                        |tlsTruststoreConfigured=true|
-                                        |licenseFileProtocol=S3|
-                                        |truststoreFileProtocol=S3|
-                                        |sns.topic.arn=arn:aws:sns:us-east-2:390270449620:InfoViewDQTopic|
-                                        |aws.accessKey=ENC(2z2fc5logEwsazSIyX4lIHlXnVof5tv806d+CmiuaFk=)|
-                                        |aws.secretKey=ENC(qHQgp3CjTku3NJ0HcklsPsgbfj7JMuFvj2ZE/QkHYm5flr0wzgpYPqQCAnhPP+KKYxGbR/z+msk=)|
-                                        |aws.region=us-east-2|
+     |AS/400 Server Connection Configuration	|connectionName=test-connection
+                                        endpoint=as400.infoviewsystems.com
+                                        userid=MULEDEV
+                                        password=MULEDEV12
+                                        libraryList=AWSDEMOS,WTF400DEV
+                                        secureConnection=false
+                                        licenseUrl=file:c:/temp/as400-license.lic
+                                        truststorePassword=ENC(cWuIRE7sMAIFguybAoTBiThjx1onRm5D)
+                                        tlsIsInsecure=false
+                                        tlsKeystoreConfigured=true
+                                        tlsTruststoreConfigured=true
+                                        licenseFileProtocol=S3
+                                        truststoreFileProtocol=S3
+                                        sns.topic.arn=arn:aws:sns:us-east-2:390270449620:InfoViewDQTopic
+                                        aws.accessKey=ENC(2z2fc5logEwsazSIyX4lIHlXnVof5tv806d+CmiuaFk=)
+                                        aws.secretKey=ENC(qHQgp3CjTku3NJ0HcklsPsgbfj7JMuFvj2ZE/QkHYm5flr0wzgpYPqQCAnhPP+KKYxGbR/z+msk=)
+                                        aws.region=us-east-2|
                                         
 
 
       
      To know the application status: sudo service as400-common-api-service status
+     
      To stop the application: sudo service as400-common-api-service stop
+     
      To start application: sudo service as400-common-api-service start
 
     
    **Logs Verification**
+   
      CommonAPIServer logs can be verified from this location /var/log/as400-common-api-service.log
     
 

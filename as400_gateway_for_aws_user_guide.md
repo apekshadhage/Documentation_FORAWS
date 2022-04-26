@@ -231,8 +231,7 @@ http://x.x.x.xx:8080/connections/{connection-name}/reopen|
 | /connections/{connection-name}/data-queue/{library-name}/{data-queue-name} | HTTP | Keep it deselected | POST | [http://x.x.x.xxx:8080/connections/{connection-name}/data-queue/{library-name}/{data-queue-name}](http://10.0.1.233:8080/connections/%7Bconnection-name%7D/data-queue/%7Blibrary-name%7D/%7Bdata-queue-name%7D) |
 | /connections/{connection-name}/invoke-program-call/{library-name}/{program-name} | Lambda | -na- | POST | Lambda Region: us-east-2Name of the Lambda function: InputTransformation |
 | connections/{connection-name}/program-call/{library-name}/{program-name} | HTTP | Keep it deselected | POST | [http://x.x.x.xxx:8080/connections/{connection-name}/program-call/{library-name}/{program-name}](http://10.0.1.233:8080/connections/%7Bconnection-name%7D/program-call/%7Blibrary-name%7D/%7Bprogram-name%7D) |
-| /connections/{connection-name}/close | HTTP | Keep it deselected | POST |
-http:// x.x.x.xxx:8080/connections/{connection-name}/close |
+| /connections/{connection-name}/close | HTTP | Keep it deselected | POST |http:// x.x.x.xxx:8080/connections/{connection-name}/close |
 | /connections/{connection-name}/reopen | HTTP | Keep it deselected | POST | http:// x.x.x.xxx:8080/connections/{connection-name}/reopen |
 
 **Note:** Here x.x.x.xxx is the IP address of the EC2 public instance, 8080 is the port on which AS400 Connector Service API is running.

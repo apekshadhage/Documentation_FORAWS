@@ -116,7 +116,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Now we need to define roote to for networks to go to the internet
    Create 2 route tables 1 is for public subnet and 2nd one for private subnet
   
-  **Steps to create route tables**
+   **Steps to create route tables**
   
    Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
   

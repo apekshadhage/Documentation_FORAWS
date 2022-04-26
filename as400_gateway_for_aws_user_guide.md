@@ -167,6 +167,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
 11. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+
     Search and click on Gateway API from AWS services dashboard, shows Gateway API dashboard
     Create new API by clicking on API link on the left side menu, leave some name and continue
     Resource Importing – Swagger collection into API
@@ -176,9 +177,11 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
     To deploy AS400 API 
     click on Action button&rarr;Deploy API&rarr;create stage and deploy
+    
+
+![image](https://user-images.githubusercontent.com/88314020/165258740-72c9a19d-9108-414c-810e-139fd6dac32c.png)
 
 
-![](RackMultipart20220423-1-c0u157_html_465fd8013ab5fa11.png)
 
 1. The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 private instance
 

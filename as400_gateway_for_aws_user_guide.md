@@ -119,19 +119,24 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
   **Steps to create route tables**
   
   Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
+  
   Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
   
   Click on publicroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select publicsubnetForMyVpc&rarr;click on save associations 
+  
   You have successfully updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
   
   Select publicroute&rarr;routs&rarr;edit routes&rarr;add routes&rarr;add 0.0.0.0/0  and target as Internet Gateway 
   igw-08b7822759edbeeee(MyVpc)&rarr;click on save changes
+  
   Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
 
   create route table&rarr;give name as privateroute and select vpc i.e MyVpc&rarr;click on create button
+  
   Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
   
   Click on privateroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select privatesubnetForMyVpc&rarr;click on save associations 
+  
   You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
 
 

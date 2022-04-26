@@ -167,18 +167,16 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
 11. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
-12. Create a VPC link and attach this to NLB
-13. Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+    Search and click on Gateway API from AWS services dashboard, shows Gateway API dashboard
+    Create new API by clicking on API link on the left side menu, leave some name and continue
+    Resource Importing – Swagger collection into API
+    Click on Resources \&gt; Actions picklist, then click on Import API under API Actions
+    Next copy and paste the Swagger collections into the text area, and then click on import
+    If everything seems to be ok then we can the below image
+    Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.
+    To deploy AS400 API 
+    click on Action button&rarr;Deploy API&rarr;create stage and deploy
 
-1. Login / Sig into AWS Management Console
-2. Choose region from picklist as US East (Ohio)us-east-2
-3. On successful sign in, Search and click on Gateway API from AWS services dashboard, shows Gateway API dashboard
-4. Create new API by clicking on API link on the left side menu, leave some name and continue
-5. Resource Importing – Swagger collection into API
-
-1. Click on Resources \&gt; Actions picklist, then click on Import API under API Actions
-2. Next copy and paste the Swagger collections into the text area, and then click on import
-3. If everything seems to be ok then we can the below image
 
 ![](RackMultipart20220423-1-c0u157_html_465fd8013ab5fa11.png)
 

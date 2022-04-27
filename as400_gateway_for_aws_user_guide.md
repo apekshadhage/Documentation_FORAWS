@@ -115,7 +115,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Now you should able to see success message as updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
 
 
-4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector.
+3. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector.
 
    **Steps to create EC2 Instance in privatesubnet**
    
@@ -125,7 +125,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     Now you should able to see success message as Successfully initiated launch of instance (i-0cf3ed2965af92b3e)
 
     
-6. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host.
+4. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host.
    
     **Steps to create EC2 Instance in publicsubnet**
     
@@ -166,7 +166,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     
 
 
-8. Create a Network Load Balance and attach it to bastion host
+5. Create a Network Load Balance and attach it to bastion host
 
    **Steps to Configure Load Balancer**
    
@@ -174,11 +174,11 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    
    Click on create target group&rarr;choose a target type instances&rarr;give Target Group Name (e.g. TGTForMyVpc)&rarr;select protocol TCP and port 8080&rarr;select      Vpc(MyVpc)&rarr;select health check protocol as TCP&rarr;click on Next&rarr;To register target instances select instances give port and&rarr;click on include all      pendings and&rarr;click on create Target group Click on Load Balancer&rarr;select type Network Load Balancer&rarr;click on create&rarr;name                            (e.g.NLBForMyVpc)&rarr;select scheme (e.g. Internal)&rarr;Ip address Type (e.g. IPV4)&rarr;select VPC (e.g. MyVpc)&rarr;select availability zone&rarr;select public    subnets&rarr;select IPV4 address (Assigned by AWS)&rarr;select protocol TCP with port 8080&rarr;forward it to Target group(e.g. TGTForMyVpc)&rarr;click on create      load Balancer.
 
-10. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
+6. Create a Lambda function i.e., InputTransformation and deploy (upload Jar), which transforms raw input json payload to as/400 compatible format and invokes the Program call API with this converted payload
      
      Click on Lambda service&rarr;click on create function&rarr;Choose one of the following options to create your function.(e.g.Author From Scratch)&rarr;provide          name(e.g.InputTransformation)&rarr;select runtime(e.g. java 8 on Amazon Linux 1)&rarr;select architecture(ex.x86_64)&rarr;permissions default&rarr;click on create      function button&rarr;click on upload from&rarr;select .zip or .jar file and upload the jar.
 
-12. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
+7. Create AWS Gateway API and import the swagger collection which represents all the AS400 API Interfaces.
 
     Navigate to API Gateway and create new API by clicking on API link on the left side menu, leave some name and continue
     
@@ -186,7 +186,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     
     1.Click on Resources Actions picklist, then click on Import API under API Actions
     
-    2.Copy and paste the swagger collections into the text area and Import
+    2.Copy the content from as400-connector-swagger-collection.txt and  paste the swagger collections into the text area and Import
     
     If everything seems to be ok then we can see the below image
     
@@ -200,11 +200,12 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
  3.Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.  
     
-    4.Create a Test Stage environment to deploy APIs
-         click on Action button&rarr;click on Deploy API  &provide name to create stage&rarr;click on Deploy button.
-         Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
-         Click check box next to AS400 Common API & Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API                      specification, configuration, and testing
-         Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL          info is available.
+ 4.Create a Test Stage environment to deploy APIs
+ 
+      click on Action button&rarr;click on Deploy API  &provide name to create stage&rarr;click on Deploy button.
+      Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
+      Click check box next to AS400 Common API & Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API                     specification, configuration, and testing
+      Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL           info is available.
          
     Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
     
@@ -212,7 +213,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
         1. From within the Gateway API
         2. Externally
     
-    All APIs created can be tested with in the configuration editor. Please refer sample-test-case-payloads.txt for test payloads.
+ All APIs created can be tested with in the configuration editor. Please refer sample-test-case-payloads.txt for test payloads.
     
     
 

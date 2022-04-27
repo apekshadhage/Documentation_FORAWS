@@ -18,7 +18,7 @@ Program Call is the most straightforward and low code option for exposing IBM i 
 
 Data queues are native IBM i objects designed primarily for inter-process communications. They are lightweight persistent queues that support processing by a key, FIFO or LIFO. The majority of integration use cases can be implemented with the pair of request and response Data Queues. Source system places a message to request data queue and waits for acknowledgement message on response data queue. The target system receives and processes a message from the request data queue then places the acknowledgement to the response data queue.
 
-The AS400Gateway for AWS provides the REST API to read or write the messages into Data Queue on demand, or continuously listen for new Data Queue messages and forward to AWS SQS / SNS in near real time.
+The AS400Gateway for AWS provides the REST API to read or write the messages into Data Queue on demand, or continuously listen for new Data Queue messages and forward to AWS SNS in near real time.
 
 # IBM i Prerequisites
 
@@ -65,9 +65,8 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
    **Steps to create VPC**
    
-   Click on Services&rarr;VPC&rarr;your VPCs&rarr;click on Create VPC &rarr;give name as MyVPC and select CIDR block as 10.0.0.0/16 and click on create VPC button.
-   
-   You successfully created vpc-0b91b185302d79fea / MyVPC
+   Click on Services&rarr;VPC&rarr;your VPCs&rarr;click on Create VPC &rarr;give name (MyVPC) and select CIDR block as 10.0.0.0/16 and click on create VPC button.
+   Now you should able to see success message as created vpc-0b91b185302d79fea / MyVPC
    
    **Steps to create Subnet**
    
@@ -75,8 +74,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    Subnet name is publicsubnet and give availability zone as no preferences and IPV4 CIDR block as 10.0.0.0/24 
    Click on AddNew subnet button 
    Name as privatesubnet and give availability zone as no preferences and IPV4 CIDR block as 10.0.1.0/24 
-   
-   You have successfully created 2 subnets: subnet-002169dd0dd057d4f, subnet-02a9384689d068bcb
+   Now you should able to see success message as created 2 subnets: subnet-002169dd0dd057d4f, subnet-02a9384689d068bcb
    
    **Steps to create Internet Gateway**
    
@@ -90,25 +88,24 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    **Steps to create route tables**
   
    Click on route tables&rarr;create route table&rarr;give name as publicroute and select vpc i.e MyVpc&rarr;click on create button
-  
-   Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
+   Now you should able to see success message Route table rtb-0e444f5f4e1cf1f13 | publicroute was created successfully.
+   
   
    Click on publicroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select publicsubnetForMyVpc&rarr;click on save associations 
-  
-   You have successfully updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
+   Now you should able to see success message updated subnet associations for rtb-0e444f5f4e1cf1f13 / publicroute.
+   
   
    Select publicroute&rarr;routs&rarr;edit routes&rarr;add routes&rarr;add 0.0.0.0/0  and target as Internet Gateway 
    igw-08b7822759edbeeee(MyVpc)&rarr;click on save changes
-  
-   Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
-
+   Now you should able to see success message Updated routes for rtb-0e444f5f4e1cf1f13 / publicroute successfully
+   
+   
    create route table&rarr;give name as privateroute and select vpc i.e MyVpc&rarr;click on create button
-  
-   Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
+   Now you should able to see success message as Route table rtb-0e63259e088aa4ea7 | privateroute was created successfully.
+   
   
    Click on privateroute&rarr;subnet Associations&rarr;click on edit subnet association&rarr;select privatesubnetForMyVpc&rarr;click on save associations 
-  
-   You have successfully updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
+   Now you should able to see success message as updated subnet associations for rtb-0e63259e088aa4ea7 / privateroute.
 
 
 4. Create an EC2 instance by selecting AMI from AWS marketplace. and attach this instance to private subnet. This instance hosts the AS400 API interfaces which in turn communicates with back-end AS400 servers through Infoview AS400 connector.
@@ -117,19 +114,19 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
    
     Click on Launch Instance&rarr;give name as AS400CommonAPiForMyVpc&rarr;click on My AMIs&rarr;select AS400-common-API ami&rarr;select Instance type according to         requirement(eg.t2.micro)&rarr;go with create new key pair option create as .ppk file by selection .ppk option and click on create.(securedAPI)&rarr;select VPC(eg.     MyVpc)&rarr;select privatesubnetForMyvpc&rarr;make sure Auto Assign  public Ip is Disable.&rarr;select create security group                                           option(eg.securityGroupForMyVpc)&rarr;add description related to security group(Optional)&rarr;(Add All rules which needs to be added to security group)&rarr;
     if requires add storage&rarr;finally click on Launch Instance
-    
-    Successfully initiated launch of instance (i-0cf3ed2965af92b3e)
+    Now you should able to see success message as Successfully initiated launch of instance (i-0cf3ed2965af92b3e)
 
+    
 6. Create a normal EC2 instance and attach this instance to public subnet. This instance will act as a bastion host or NAT Gateway host.
    
     **Steps to create EC2 Instance in publicsubnet**
     
     Click on Launch Instance&rarr;give name as AS400GatewayForMyVpc&rarr;select ubuntu or any other os&rarr;select Instance type according to requirement(eg.               t2.micro)&rarr;go with create new key pair option create as .ppk file by selection .ppk option and click on create.(eg.publickey)&rarr;select VPC (eg.                 MyVpc)&rarr;select publicsubnetForMyVpc&rarr;make sure Auto Assign public Ip is enable.&rarr;select existing security group(eg. securityGroupForMyVpc)&rarr;if         requires add storage&rarr;finally click on Launch Instance
+    Now you should able to see success message as Successfully initiated launch of instance (i-0f9569de3565e58e1)
+   
     
-    Successfully initiated launch of instance (i-0f9569de3565e58e1)
-    
-     AS400GatewayForMyVpc – is an EC2 instance and acts as bastion / NAT gateway host, which is part of public subnet under VPC. By default, application starts running      on port 8080.
-     AS400CommonAPiForMyVpc – is an Ec2 instance and hosts the AS400 connector API interfaces.
+    AS400GatewayForMyVpc – is an EC2 instance and acts as bastion / NAT gateway host, which is part of public subnet under VPC. By default, application starts running     on port 8080.
+    AS400CommonAPiForMyVpc – is an Ec2 instance and hosts the AS400 connector API interfaces.
     
     **Managing Application Service**
     
@@ -309,8 +306,7 @@ Salesforce is used as a sample external system that sends orders to IBM i based 
 
 ![image](https://user-images.githubusercontent.com/88314020/165104639-b994e4a4-1c9b-4a54-9af2-0c2c7b8a3be0.png)
 
-Considering an use case with Salesforce is a source system whenever we create a record in salesforce we use Apex classes in salesforce to fetch the record and push to API gateway since AS400 gateway doesn’t understand the request coming from Salesforce we use Lambda function in between Salesforce and API gateway to format the input in AS400 consumable format.
-We do necessary operations in AS400 gateway and response will be push to SNS topic Lambda function pick the messages from SNS topic and update response back to the salesforce.
+Considering an use case with Salesforce as a source system, whenever a record is created in salesforce Apex class in salesforce will fetch the record and push to API gateway. Since AS400 gateway doesn’t understand the request coming from Salesforce, Lambda function will help in formatting the input in AS400 consumable format. Necessary operations are done in AS400 gateway and response will be push to SNS topic. Lambda function will pick the messages from SNS topic and update back to the salesforce.
 
 
 

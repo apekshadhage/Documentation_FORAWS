@@ -185,6 +185,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     Resource Importing – Swagger collection into API
     
     1.Click on Resources Actions picklist, then click on Import API under API Actions
+    
     2.Copy and paste the swagger collections into the text area and Import
     
     If everything seems to be ok then we can see the below image
@@ -214,7 +215,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     All APIs created can be tested with in the configuration editor. Please refer sample-test-case-payloads.txt for test payloads.
 
 
-1. The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 private instance
+The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 private instance
 
 | API Interface Name | Integration Type | Use Proxy Integration | Method | Endpoint URL|
 | --- | --- | --- | --- | --- |
@@ -232,7 +233,7 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 **Note:** Here x.x.x.xxx is the IP address of the EC2 private instance, 8080 is the port on which AS400 Connector Service API is running.
 
-1. The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 public instance
+The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 public instance
 
 | API Interface Name | Integration Type | Use Proxy Integration | Method | Endpoint URL|
 | --- | --- | --- | --- | --- |

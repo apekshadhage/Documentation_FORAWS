@@ -198,6 +198,8 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
 
 
 
+
+
     3.Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.  
     
     4.Create a Test Stage environment to deploy APIs
@@ -213,6 +215,8 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
         2. Externally
     
     All APIs created can be tested with in the configuration editor. Please refer sample-test-case-payloads.txt for test payloads.
+    
+    
 
 
 The following table depicts Gateway API interface mapping to AS400 Connector Service API which is hosted onto a EC2 private instance

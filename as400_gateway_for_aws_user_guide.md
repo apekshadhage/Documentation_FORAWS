@@ -202,14 +202,14 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     
  4.Create a Test Stage environment to deploy APIs
  
-      click on Action button&rarr;click on Deploy API  &provide name to create stage&rarr;click on Deploy button.
-      Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
-      Click check box next to AS400 Common API & Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API                     specification, configuration, and testing
-      Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL           info is available.
+   click on Action button&rarr;click on Deploy API  &provide name to create stage&rarr;click on Deploy button.
+   Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
+   Click check box next to AS400 Common API & Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API                      specification, configuration, and testing
+   Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL          info is available.
          
-    Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
+   Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
     
-    Testing API Gateway Interfaces in two ways
+   Testing API Gateway Interfaces in two ways
         1. From within the Gateway API
         2. Externally
     

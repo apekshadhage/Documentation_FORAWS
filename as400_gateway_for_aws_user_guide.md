@@ -188,18 +188,23 @@ AWS user account with appropriate roles for managing EC2 instances, AWS API Gate
     2.Copy and paste the swagger collections into the text area and Import
     
     If everything seems to be ok then we can see the below image
+    
 
 ![image](https://user-images.githubusercontent.com/88314020/165258740-72c9a19d-9108-414c-810e-139fd6dac32c.png)
 
 
 
 
+
+
     3.Map API Gateway Interfaces with Service API interfaces and Lambda functions using HTTP and VPCLink.  
+    
     4.Create a Test Stage environment to deploy APIs
          click on Action button&rarr;click on Deploy API  &provide name to create stage&rarr;click on Deploy button.
          Search and click on API Gateway from within the AWS console, API Gateway Dashboard gets displayed
          Click check box next to AS400 Common API & Shows API interfaces info in a tree structure format where lot of insights can be drawn in terms of API                      specification, configuration, and testing
          Currently API interfaces are deployed in the Test Stage environment. To get Test stage environment info, click on Stages in the left side menu. Here site URL          info is available.
+         
     Ex. [https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test](https://46oht9t3f8.execute-api.us-east-2.amazonaws.com/test)
     
     Testing API Gateway Interfaces in two ways

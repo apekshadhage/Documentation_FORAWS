@@ -66,22 +66,23 @@ is intended to perform. The connector supports the following operations:
 
 **Confluent Setup**
     
--  **Steps to setup Stanalone confluent in local environment**
+-  **Steps to setup confluent kafka standalone environment in local system**
 
       https://docs.confluent.io/5.5.0/quickstart/ce-quickstart.html
 
--  **steps to setup stanadlone confluent in cloud environment**
+-  **Steps to setup confluent kafka standalone environment in cloud**
 
       https://dzone.com/articles/installing-and-configuring-confluent-platform-kafk
 
 
-once the confluent kafka install follow the below steps for connector installation
+once the confluent kafka install follows the below steps for connector installation
             
   **Install the AS400 Connector** 
 
   Connectors are packaged as Kafka Connect plugins. Kafka connect isolates each plugin so that the 
   plugin libraries do not conflict with each other. Download and extract the ZIP file for 
   your connector and then follow the below installation instructions.
+  
   -  **In Standalone mode**
 
       1.  kafka-connect-as400 connector can be downloaded directly from the confluent-hub using 
@@ -99,21 +100,6 @@ once the confluent kafka install follow the below steps for connector installati
       ![image](https://user-images.githubusercontent.com/46368616/133744830-27cd0bc2-4bf0-4f4c-8b97-c8f84a21bad8.png)
       
       5.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used.
-
-
-  **License**
-
-    The IBM i connector requires a license file “as400-license.lic” from Infoview to enable access to specific IBM i system(s). 
-      
-    If the confluent platform running in standalone mode, then the license must be placed into the local directory  
-    which should be configured in license path of connect configuration. 
-      
-      
-  ![image](https://user-images.githubusercontent.com/46368616/133753154-aef26d53-f4f6-4090-8dc3-1c1a08922a72.png)
-  
-  
-  ![image](https://user-images.githubusercontent.com/46368616/133755111-6d2b9a70-0da5-4e50-b38b-9f881587bb79.png)
-
 
 
 - **Confluent Setup and connector instalation through docker**
@@ -144,12 +130,35 @@ once the confluent kafka install follow the below steps for connector installati
     7.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used. 
 
 
-**License**
 
- If the confluent platform running through docker then license path should be declared in the docker file.
+  **License Management:**
 
- 
- ![image](https://user-images.githubusercontent.com/46368616/133755318-caec2ade-52e2-4aa4-a28c-d7bdb267bd89.png)
+	The IBM i connector requires a license file &quot;as400-license.lic&quot; from Infoview to enable access to specific IBM i system(s).
+
+	Managing license in different ways by using different protocols such as S3, HTTP/HTTPS, FTP, FILE, SMB etc. and accessing it through these protocols in 
+	our application needs to configure in connector configuration.
+
+	Available Protocols to load license file/truststore file (HTTP,HTTPS, FTP, SMB, S3, FILE, CLASSPATH_)_
+
+	what protocol used to load license file/truststore file that need to be configured as below in application-dev.properties file as below.
+
+	licenseFileProtocol=S3
+
+	Truststore file is used to establish the secure connection with IBM i AS400 system. if secure connection property set as true then needs to configure
+	truststore file protocol in application-dev.properties file as below.
+
+	truststoreFileProtocol=S3
+
+	Following table contains the properties related to protocols requires to be configure:
+
+	| **#** | **Protocol Name** | **Properties** |
+	| --- | --- | --- |
+	| 1 | S3 | s3.bucket=path-to-bucket<br>s3.region=us-east-2<br>s3.accessKey=ENC(encrypted-access-key)<br>s3.secretKey=ENC(encrypted-secret-key)|
+	| 2 | HTTP/HTTPS | http.url=url-URL<br>http.dir.path=license-file-path<br>http.username=ENC(encrypted-user-name)</br>http.password=ENC(encrypted-pwd)|
+	| 3 | FTP | ftp.host=ftp-host<br>ftp.dir.path=path<br>ftp.username=ENC(encrypted-user-name)<br>ftp.password=ENC(encrypted-pwd)
+	| 4 | FILE/SMB | file.Path=path-to-license-file|
+
+
 
 
   Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and marketing@infoviewsystems.com 

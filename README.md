@@ -249,14 +249,16 @@ once the confluent kafka install follows the below steps for connector installat
 		    
 		  ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
 		  
+		  
+		  
 | Protocols     | Parameters to configure                                   |Mandatory                    |configuration keys for parameters |
 |:--------------:|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
 | FILE| path <br> filename                                                   | required <br>  required           |as400.license.path<br> license.fileName|
 | S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key     | required<br>required<br>required<br>required<br>required|s3.bucket<br>license.fileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
-|FTP|
-|CLASSPATH|
-|HTTP|
-|HTTPS|
+|FTP|Host<br>directory path<br>filename<br>username<br>password|required<br>required<br>required<br>required<br>required|ftp.host<br>ftp.dir.path<br>license.fileName<br>ftp.username<br>ftp.password|
+|CLASSPATH|license/truststore classpath<br>filename|required<br>required|license.classpath<br>license.fileName|
+|HTTP|HTTP Host<br>HTTP Directory<br>filename<br>HTTP Username<br>HTTP Password|required<br>required<br>required<br>required<br>required|http.url<br>http.dir.path<br>license.fileName<br>http.username<br>http.password|
+|HTTPS|HTTPS Host<br>HTTPS Directory<br>filename<br>HTTPS Username<br>HTTPS Password|required<br>required<br>required<br>required<br>required|https.url<br>https.dir.path<br>license.fileName<br>https.username<br>https.password|
 
 Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
   

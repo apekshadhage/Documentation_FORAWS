@@ -178,6 +178,7 @@ once the confluent kafka install follows the below steps for connector installat
 	Based on the protocol parameters needs to be configure.
 	
 	1. FILE
+	
 		find the attached screenshot for reference
 		
 		![image](https://user-images.githubusercontent.com/88314020/191207207-c25650a9-670b-4699-80a0-2a628450903d.png)
@@ -195,11 +196,11 @@ once the confluent kafka install follows the below steps for connector installat
 	2. S3
 		If the license/truststore file wanted to access from  S3 
 		 
-		 Please find the screenshot for reference 
+		Please find the screenshot for reference 
 		 
 		 ![image](https://user-images.githubusercontent.com/88314020/191210478-f0869272-96e8-4d1b-b888-4e1b965f32d1.png)
 
-		  It requires five values to access files from S3
+		It requires five values to access files from S3
 		  
 		   a. S3 bucket path
 		   
@@ -215,13 +216,13 @@ once the confluent kafka install follows the below steps for connector installat
 	
 		Please find the screenshot for reference
 		    
-		    ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
+		  ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
 
-		    It requires two values
+		It requires two values
 		    
 		    a. classpath
 		    
-		      The path which is used to set CLASSPATH for licence/truststore file
+		       The path which is used to set CLASSPATH for licence/truststore file
 
 		    b. filename
 	4. FTP
@@ -244,7 +245,7 @@ once the confluent kafka install follows the below steps for connector installat
 		Please refere the screenshot to configure the values required for HTTPS protocol inorder to access license/truststore file
 		    
 		    
-		    ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
+		  ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
 	    
 
 Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 

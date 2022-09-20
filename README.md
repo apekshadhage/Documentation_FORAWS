@@ -397,7 +397,7 @@ Configure these connector properties.
 
 
 **Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
-
+```
 {
   "name": "AS400DataQueueSinkConnectorConnector_0",
   "config": {
@@ -424,6 +424,7 @@ Configure these connector properties.
     "value.converter.schema.registry.url": "http://localhost:8081"
   }
 }
+```
 
 **AS400 Program Call Sink Connector Configuration Properties**
 

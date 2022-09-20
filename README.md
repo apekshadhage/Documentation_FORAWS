@@ -309,7 +309,7 @@ Configure these connector properties.
 |Data Queue|Read data queue name.|Required|null|
 |Library|Read data queue library.|Required|null|
 |Key|Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|null|
-|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, enter Greater or Equal.|Required|null|
+|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Required|null|
 |Keep messages in Queue|Ensure it is unchecked unless the intent is to leave the message in the queue after reading.|Optional|true|
 |Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the specified IBM i file, and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|
 |Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|
@@ -335,15 +335,10 @@ Configure these connector properties.
     "as400.url": "xxxxxxxxxx",
     "as400.userId": "xxxxx",
     "as400.password": "xxxxxxx",
-    "as400.secure.connection": "true",
-    "truststore.fileName": "truststore file name",
-    "TLS.password": "xxxxxx",
-    "TLS.isInsecure": "false",
-    "TLS.isKeystoreConfigured": "false",
-    "TLS.isTruststoreConfigured": "true",
+    "as400.secure.connection": "false",
     "as400.license.protocol": "FILE",
-    "as400.license.path": "license/truststore file path",
-    "license.fileName": "license file name",
+    "as400.license.path": "/home/ubuntu/license",
+    "license.fileName": "as400-license.lic",
     "as400.read.dataqueue.name": "abc",
     "as400.read.dataqueue.library": "Library",
     "as400.source.format.name": "xyz",
@@ -384,12 +379,7 @@ Configure these connector properties.
     "as400.url": "xxxxxxxxxx",
     "as400.userId": "xxxxx",
     "as400.password": "xxxxxx",
-    "as400.secure.connection": true,
-    "truststore.fileName": "Info400.trustore",
-    "TLS.password": "xxxxxx",
-    "TLS.isInsecure": false,
-    "TLS.isKeystoreConfigured": false,
-    "TLS.isTruststoreConfigured": true,
+    "as400.secure.connection": "false",
     "as400.license.protocol": "FILE",
     "as400.license.path": "/home/apeksha/license",
     "license.fileName": "as400-license.lic",

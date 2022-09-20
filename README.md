@@ -396,7 +396,32 @@ Configure these connector properties.
 
 Configure these connector properties
 
-![image](https://user-images.githubusercontent.com/46368616/133770695-f3f16a0b-dd3d-4214-b117-a8420a73a929.png)
+```
+{
+  "name": "AS400ProgramCallSinkConnector_POSTORDSP",
+  "config": {
+    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400ProgramCallSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "topics": "POSTORDSP_INPUT",
+    "as400.url": "xxxxxxxxxx",
+    "as400.userId": "xxxx",
+    "as400.password": "xxxx",
+    "as400.secure.connection": "false",
+    "as400.license.protocol": "FILE",
+    "as400.license.path": "/home/ubuntu/license",
+    "license.fileName": "as400-license.lic",
+    "as400.program.name": "POSTORDSP",
+    "as400.program.library": "Library",
+    "as400.program.parameters": "{ }",
+    "as400.procedure.name": "POSTORDERS",
+    "as400.procedure.returnsValue": "false",
+    "as400.threadsafe": "false",
+    "sink.kafka.topic": "POSTORDSP_OUTPUT",
+    "value.converter.schemas.enable": "false"
+  }
+}
+```
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|

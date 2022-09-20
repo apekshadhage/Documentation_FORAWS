@@ -110,49 +110,51 @@ once the confluent kafka install follows the below steps for connector installat
               link
 	       
     2.	Check once the connect service from the above file for 
-    
-        volumes:
-	 
-        /home/ubuntu/license/:/opt/
-      
-        create license directory in local system (ex. mkdir license) and place the as400-license.lic file in the same directory.
-   
-        while running docker-compose.yml file license file i.e as400-license.lic will copy from local to docker container path i.e /opt/.
+
+		volumes:
+
+		/home/ubuntu/license/:/opt/
+
+		create license directory in local system (ex. mkdir license) and place the as400-license.lic file in the same directory.
+
+		while running docker-compose.yml file license file i.e as400-license.lic will copy from local to docker container path i.e /opt/.
     
     3.	Now execute below command 
         
-	docker-compose up -d
-	
-	It will download all images from docker hub and install 
-	
-	once downloading completed verify the status with below command is all services up and running
-	
-        docker-compose ps -a
+		docker-compose up -d
 
-        ![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
+		It will download all images from docker hub and install 
+
+		once downloading completed verify the status with below command is all services up and running
+
+		docker-compose ps -a
+
+		![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
 
     
     4.  To verify the license is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
         
-	docker exec -it connect bash
-	
-	execute below command to validate
-	
-	cd /opt/
-	ls -l
-	
-	find the screenshot for reference
-	
-	![image](https://user-images.githubusercontent.com/88314020/191203434-03ebdc39-d320-4c38-b9de-a595950f89fc.png)
+		docker exec -it connect bash
+
+		execute below command to validate
+
+		cd /opt/
+		ls -l
+
+		find the screenshot for reference
+
+		![image](https://user-images.githubusercontent.com/88314020/191203434-03ebdc39-d320-4c38-b9de-a595950f89fc.png)
 
 
     5.  To verify the infoviewsystems-as400-kafka-connect is install or not go through below steps
          
-	 cd /usr/share/confluent-hub-components/ 
-	 ls -l
-	 find the screenshot for reference
-	 
-	 ![image](https://user-images.githubusercontent.com/88314020/191204410-9d57fe7d-b4ca-4d21-8b57-3238455b2468.png)
+		 cd /usr/share/confluent-hub-components/ 
+		 
+		 ls -l
+		 
+		 find the screenshot for reference
+
+		 ![image](https://user-images.githubusercontent.com/88314020/191204410-9d57fe7d-b4ca-4d21-8b57-3238455b2468.png)
 
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 

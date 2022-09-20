@@ -249,8 +249,10 @@ once the confluent kafka install follows the below steps for connector installat
 		    
 		  ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
 		  
-		  
-		  
+
+Based on protocol type needs to configure below properties
+
+
 | Protocols     | Parameters to configure                                   |Mandatory                    |configuration keys for parameters |
 |:--------------:|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
 | FILE| path <br> filename                                                   | required <br>  required           |as400.license.path<br> license.fileName|

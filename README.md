@@ -327,30 +327,55 @@ Configure these connector properties.
 **Note:** Here is a sample property for AS400 source connector configuration
 
 {
+
   "name": "AS400SourceConnector_CDCDQ8",
+  
   "config": {
+  
     "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400SourceConnector",
+    
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    
     "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    
     "as400.url": "xxxxxxxxxx",
+    
     "as400.userId": "xxxxx",
+    
     "as400.password": "xxxxxxx",
+    
     "as400.secure.connection": "true",
+    
     "truststore.fileName": "truststore file name",
+    
     "TLS.password": "xxxxxx",
+    
     "TLS.isInsecure": "false",
+    
     "TLS.isKeystoreConfigured": "false",
+    
     "TLS.isTruststoreConfigured": "true",
+    
     "as400.license.protocol": "FILE",
+    
     "as400.license.path": "/home/apeksha/license",
+    
     "license.fileName": "license file name",
+    
     "as400.read.dataqueue.name": "abc",
+    
     "as400.read.dataqueue.library": "Library",
+    
     "as400.source.format.name": "xyz",
+    
     "as400.source.file.library": "Library",
+    
     "source.kafka.topic": "Test",
-    "value.converter.schema.registry.url": "http://localhost:8081"
+    
+    "value.converter.schema.registry.url": "http://{PublicIP}:8081"
+    
   }
+  
 }
 
 **AS400 Data Queue Sink Connector Configuration Properties**

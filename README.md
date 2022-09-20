@@ -212,6 +212,7 @@ once the confluent kafka install follows the below steps for connector installat
 		   f. Secret Key 
 		   
 	3. CLASSPATH
+	
 		Please find the screenshot for reference
 		    
 		    ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
@@ -228,7 +229,7 @@ once the confluent kafka install follows the below steps for connector installat
 		Please refere the screenshot to configure the values required for FTP protocol inorder to access license/truststore file
 		     
 		     
-		     ![image](https://user-images.githubusercontent.com/88314020/191214265-88000b8c-17e1-4b16-a945-74b173810fbc.png)
+		  ![image](https://user-images.githubusercontent.com/88314020/191214265-88000b8c-17e1-4b16-a945-74b173810fbc.png)
 		     
 	5. HTTP
 	 
@@ -239,7 +240,7 @@ once the confluent kafka install follows the below steps for connector installat
 		  
 	     	
 	6. HTTPS
-	7. 
+	 
 		Please refere the screenshot to configure the values required for HTTPS protocol inorder to access license/truststore file
 		    
 		    

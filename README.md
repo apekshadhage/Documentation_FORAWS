@@ -255,7 +255,7 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 **AS400 Connection Configuration Properties**
 -  **Connection**
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parametes |
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters |
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
 | Name          |Enter a unique label for the connector in your application.| Required                          |AS400SourceConnectorConnector_0|name|
 |AS400 URL      |AS400 system connection url.                              |    Required                          |null|as400.url|
@@ -275,28 +275,28 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 
 -  **Connection (Optional)**
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Operation Type |An Operation type to be done on AS400 FILE = 0, PRINT = 1,COMMAND = 2,DATAQUEUE = 3, DATABASE = 4, RECORDACCESS = 5, CENTRAL = 6, SIGNON = 7|Optional|2|
-|CCSID|-|Optional|0|
-|Pre Start Count Data Q|-|Optional|2|
-|Pre Start Count Command|-|Optional|2|
-|Cleanup Interval|-|Optional|2|
-|Max Connection|Maximum connections allowed.|Optional|5|
-|Max Inactivity|Maximum time to inactive the session for connection.|Optional|10|
-|Max Lifetime|Maximum lifetime for connection.|Optional|60000|
-|Max Use Count|-|Optional|10|
-|Max Use Time|-|Optional|30000|
-|Pre-Test Connection|-|Optional|true|
-|Run Maintenance|-|Optional|true|
-|Thread Used|-|Optional|true|
-|Keep Alive|-|Optional|true|
-|Login Timeout|-|Optional|0|
-|Receive Buffer Size|-|Optional|1000|
-|Send Buffer Size|-|Optional|1000|
-|So Linger|-|Optional|0|
-|So Timeout|-|Optional|0|
-|TCP No Delay|-|Optional|true|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|----------------------------------|
+|Operation Type |An Operation type to be done on AS400 FILE = 0, PRINT = 1,COMMAND = 2,DATAQUEUE = 3, DATABASE = 4, RECORDACCESS = 5, CENTRAL = 6, SIGNON = 7|Optional|2|as400.operation.type|
+|CCSID|-|Optional|0|as400.ccsid|
+|Pre Start Count Data Q|-|Optional|2|as400.prestart.count.dq|
+|Pre Start Count Command|-|Optional|2|as400.prestart.count.command|
+|Cleanup Interval|-|Optional|2|as400.cleanup.interval|
+|Max Connection|Maximum connections allowed.|Optional|5|as400.max.connection|
+|Max Inactivity|Maximum time to inactive the session for connection.|Optional|10|as400.max.inactivity|
+|Max Lifetime|Maximum lifetime for connection.|Optional|60000|as400.max.lifetime|
+|Max Use Count|-|Optional|10|as400.max.usecount|
+|Max Use Time|-|Optional|30000|as400.max.usetime|
+|Pre-Test Connection|-|Optional|true|as400.pretest.connection|
+|Run Maintenance|-|Optional|true|as400.run.maintenance|
+|Thread Used|-|Optional|true|as400.thread.used|
+|Keep Alive|-|Optional|true|as400.keep.alive|
+|Login Timeout|-|Optional|0|as400.login.timeout|
+|Receive Buffer Size|-|Optional|1000|as400.receive.buffer.size|
+|Send Buffer Size|-|Optional|1000|as400.send.buffer.size|
+|So Linger|-|Optional|0|as400.so.linger|
+|So Timeout|-|Optional|0|as400.so.timeout|
+|TCP No Delay|-|Optional|true|as400.tcp.nodelay|
 
 **AS400 Source Connector Configuration Properties**
 
@@ -305,25 +305,25 @@ Configure these connector properties.
 ![image](https://user-images.githubusercontent.com/46368616/133764594-8d2caf1b-be1c-4745-8a72-c413f4e6e8fc.png)
 
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Data Queue|Read data queue name.|Required|null|
-|Library|Read data queue library.|Required|null|
-|Key|Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|null|
-|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Optional|null|
-|Keep messages in Queue|Ensure it is unchecked unless the intent is to leave the message in the queue after reading.|Optional|true|
-|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the specified IBM i file, and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|
-|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|
-|Number of Consumers|Number of consumers.|Optional|4|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Data Queue|Read data queue name.|Required|null|as400.read.dataqueue.name|
+|Library|Read data queue library.|Required|null|as400.read.dataqueue.library|
+|Key|Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|null|as400.read.dataqueue.key|
+|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Optional|null|as400.read.dataqueue.key.search.type|
+|Keep messages in Queue|Ensure it is unchecked unless the intent is to leave the message in the queue after reading.|Optional|true|as400.source.keep.message|
+|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the specified IBM i file, and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|as400.source.format.name|
+|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|as400.source.file.library|
+|Number of Consumers|Number of consumers.|Optional|4|as400.source.consumer.numbers|
 
 - **Source Response**
 
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Response Data Queue|Will update the response back to the data queue.|Optional|null|
-|Response Data Queue Library|Response data queue library.|Optional|null|
-|Response Data Queue Expression|Response data queue Expression.|Optional|null|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Response Data Queue|Will update the response back to the data queue.|Optional|null|as400.write.dataqueue.name|
+|Response Data Queue Library|Response data queue library.|Optional|null|as400.write.dataqueue.library|
+|Response Data Queue Expression|Response data queue Expression.|Optional|null|as400.response.dataqueue.expression|
 
 **Note:** Here is a sample property for AS400 source connector configuration
 ```
@@ -356,16 +356,15 @@ Configure these connector properties.
 
 ![image](https://user-images.githubusercontent.com/46368616/133767545-f4f0bf51-c9cb-4435-ac0f-04a5190f3502.png)
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Data Queue     |Write data queue name.|Required|null|
-|Library        |Write data queue library.|Required|null|
-|Is Keyed DataQ |Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|false|
-|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the the specified IBM i file and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|
-|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|
-|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|
-|DQ Entry Length|Max DQ Entry Length. When specified and greater than 0, the parameter value will be truncated to fit the max length.|Optional|0|
-|DQ Key Length|Max DQ Key Length. When specified and greater than 0, the parameter value will be used (instead of dynamically retrieving it from DQ definitions on the server).|Optional|null|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Data Queue     |Write data queue name.|Required|null|as400.write.dataqueue.name|
+|Library        |Write data queue library.|Required|null|as400.write.dataqueue.library|
+|Is Keyed DataQ |Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|false|as400.write.dataqueue.key|
+|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the the specified IBM i file and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|as400.sink.format.name|
+|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|as400.sink.file.library|
+|DQ Entry Length|Max DQ Entry Length. When specified and greater than 0, the parameter value will be truncated to fit the max length.|Optional|0|as400.dq.entry.length|
+|DQ Key Length|Max DQ Key Length. When specified and greater than 0, the parameter value will be used (instead of dynamically retrieving it from DQ definitions on the server).|Optional|null|as400.dq.key.length|
 
 
 **Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
@@ -424,16 +423,16 @@ Configure these connector properties
 }
 ```
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Program Name   |AS400 program name|Required|null|
-|Program Library|Program library name|Required|null|
-|Program Parameters|List of definitions and value references of program parameters|Optional|null|
-|Procedure Name|Name of the procedure|Optional|null|
-|Procedure Returns Value|Indicator if the program procedure returns a value.|Optional|false|
-|Threadsafe|Indicator if the program is thread safe|Optional|false|
-|Sink Target Topic|Sink target topic is a topic to push program call output|Required|null|
-|Kafka Partition Key|Kafka partition key to push record to topic in the specific location|Required|null|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Program Name   |AS400 program name|Required|null|as400.program.name|
+|Program Library|Program library name|Required|null|as400.program.library|
+|Program Parameters|List of definitions and value references of program parameters|Optional|null|as400.program.parameters|
+|Procedure Name|Name of the procedure|Optional|null|as400.procedure.name|
+|Procedure Returns Value|Indicator if the program procedure returns a value.|Optional|false|as400.procedure.returnsValue|
+|Threadsafe|Indicator if the program is thread safe|Optional|false|as400.threadsafe|
+|Sink Target Topic|Sink target topic is a topic to push program call output|Required|null|sink.kafka.topic|
+|Kafka Partition Key|Kafka partition key to push record to topic in the specific location|Required|null|sink.kafka.partition.key|
 
 **Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
 
@@ -451,12 +450,13 @@ Configure these connector properties
 
 **Truststore**
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Password|The password used to protect the trust store.|Optional|null|
-|Insecure|If true, no certificate validations are performed, rendering connections vulnerable to attacks. Use at your own risk.|Optional|false|
-|IsKeystoreConfigured|-|Optional|true|
-|IsTruststoreConfigured|-|Optional|true|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Truststore Filename| truststore file name|optional|truststore.fileName|
+|Password|The password used to protect the trust store.|Optional|null|TLS.password|
+|Insecure|If true, no certificate validations are performed, rendering connections vulnerable to attacks. Use at your own risk.|Optional|false|TLS.isInsecure|
+|IsKeystoreConfigured|-|Optional|true|TLS.isKeystoreConfigure|
+|IsTruststoreConfigured|-|Optional|true|TLS.isTruststoreConfigured|
 
 
 

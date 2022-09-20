@@ -194,6 +194,7 @@ once the confluent kafka install follows the below steps for connector installat
 		    Provide the license file name
 		    
 	2. S3
+	
 		If the license/truststore file wanted to access from  S3 
 		 
 		Please find the screenshot for reference 

@@ -396,6 +396,24 @@ Configure these connector properties.
 
 Configure these connector properties
 
+![image](https://user-images.githubusercontent.com/88314020/191261271-f63a4fdb-e1ff-4f97-a9f1-5fd9252aa630.png)
+
+
+
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+|Program Name   |AS400 program name|Required|null|as400.program.name|
+|Program Library|Program library name|Required|null|as400.program.library|
+|Program Parameters|List of definitions and value references of program parameters|Optional|null|as400.program.parameters|
+|Procedure Name|Name of the procedure|Optional|null|as400.procedure.name|
+|Procedure Returns Value|Indicator if the program procedure returns a value.|Optional|false|as400.procedure.returnsValue|
+|Threadsafe|Indicator if the program is thread safe|Optional|false|as400.threadsafe|
+|Sink Target Topic|Sink target topic is a topic to push program call output|Required|null|sink.kafka.topic|
+|Kafka Partition Key|Kafka partition key to push record to topic in the specific location|Required|null|sink.kafka.partition.key|
+
+**Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
+
+
 ```
 {
   "name": "AS400ProgramCallSinkConnector_POSTORDSP",
@@ -422,21 +440,6 @@ Configure these connector properties
   }
 }
 ```
-
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Program Name   |AS400 program name|Required|null|as400.program.name|
-|Program Library|Program library name|Required|null|as400.program.library|
-|Program Parameters|List of definitions and value references of program parameters|Optional|null|as400.program.parameters|
-|Procedure Name|Name of the procedure|Optional|null|as400.procedure.name|
-|Procedure Returns Value|Indicator if the program procedure returns a value.|Optional|false|as400.procedure.returnsValue|
-|Threadsafe|Indicator if the program is thread safe|Optional|false|as400.threadsafe|
-|Sink Target Topic|Sink target topic is a topic to push program call output|Required|null|sink.kafka.topic|
-|Kafka Partition Key|Kafka partition key to push record to topic in the specific location|Required|null|sink.kafka.partition.key|
-
-**Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
-
-![image](https://user-images.githubusercontent.com/46368616/133773202-dd26b9dd-3bae-4ea4-bb3b-b45f70cfd889.png)
 
 **TLS Configuration**
 

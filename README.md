@@ -255,15 +255,16 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 **AS400 Connection Configuration Properties**
 -  **Connection**
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-| Name          |Enter a unique label for the connector in your application.| Required                          |AS400SourceConnectorConnector_0|
-|AS400 URL      |AS400 system connection user.                              |    Required                          |null|
-|PASSWORD     |AS400 system connection password.|Required|null|
-|License/truststore protocol |Please refere above mentioned license management section |Required|null|
+| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parametes |
+|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
+| Name          |Enter a unique label for the connector in your application.| Required                          |AS400SourceConnectorConnector_0|name|
+|AS400 URL      |AS400 system connection url.                              |    Required                          |null|as400.url|
+|User Id        |AS400 System user                                          |Required     |null|as400.userId|
+|PASSWORD     |AS400 system connection password.|Required|null|as400.password|
+|License/truststore protocol |Please refere above mentioned license management section |Required|null|as400.license.protocol|
 |IASP|Logical partitions in the systems.|Optional|null|
 |Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|
-|Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|
+|Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|as400.secure.connection|
 |Socket Timeout|Socket Timeout, ms. Default value of -1 means the default JVM SO_TIMEOUT will be used|Optional|-1|
 |Time unit to be used for Socket Timeout|Socket Timeout time unit|Optional|MILLISECONDS|
 |Connection Retries|Number of times to retry establishing the connection internally before throwing an exception and passing back to Kafka connection Manager.|Optional|3|

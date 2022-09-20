@@ -375,7 +375,7 @@ Configure these connector properties
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Truststore|Truststore is used to store certificates from Certified Authorities (CA) that verify the certificate presented by the server in SSL connection|
+|Truststore|Truststore is used to store jks type of certificates from Certified Authorities (CA) that verify the certificate presented by the server in SSL connection|
 
 
 ![image](https://user-images.githubusercontent.com/46368616/133774025-d397bcd4-b88f-49a7-b06f-305b0dac9f5b.png)
@@ -385,7 +385,6 @@ Configure these connector properties
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Path           |The location (which will be resolved relative to the current classpath and file system, if possible) of the trust store.|Optional|null|
 |Password|The password used to protect the trust store.|Optional|null|
 |Insecure|If true, no certificate validations are performed, rendering connections vulnerable to attacks. Use at your own risk.|Optional|false|
 |IsKeystoreConfigured|-|Optional|true|

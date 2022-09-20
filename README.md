@@ -455,7 +455,7 @@ Configure these connector properties
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Truststore Filename| truststore file name|optional|truststore.fileName|
+|Truststore Filename| truststore file name|optional|null|truststore.fileName|
 |Password|The password used to protect the trust store.|Optional|null|TLS.password|
 |Insecure|If true, no certificate validations are performed, rendering connections vulnerable to attacks. Use at your own risk.|Optional|false|TLS.isInsecure|
 |IsKeystoreConfigured|-|Optional|true|TLS.isKeystoreConfigure|

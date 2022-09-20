@@ -262,15 +262,15 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 |User Id        |AS400 System user                                          |Required     |null|as400.userId|
 |PASSWORD     |AS400 system connection password.|Required|null|as400.password|
 |License/truststore protocol |Please refere above mentioned license management section |Required|null|as400.license.protocol|
-|IASP|Logical partitions in the systems.|Optional|null|
-|Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|
+|IASP|Logical partitions in the systems.|Optional|null|as400.iasp|
+|Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|as400.libraries|
 |Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|as400.secure.connection|
-|Socket Timeout|Socket Timeout, ms. Default value of -1 means the default JVM SO_TIMEOUT will be used|Optional|-1|
-|Time unit to be used for Socket Timeout|Socket Timeout time unit|Optional|MILLISECONDS|
-|Connection Retries|Number of times to retry establishing the connection internally before throwing an exception and passing back to Kafka connection Manager.|Optional|3|
-|Reconnection Period|Time between internal reconnection retries in ms.|Optional|60000|
-|Time unit to be used for Reconnection Period|Reconnection period time unit.|Optional|MILLISECONDS|
-|Connection Time to Live|Max time (Seconds) that the connection can be used.|Optional|0|
+|Socket Timeout|Socket Timeout, ms. Default value of -1 means the default JVM SO_TIMEOUT will be used|Optional|-1|as400.socket.timeout|
+|Time unit to be used for Socket Timeout|Socket Timeout time unit|Optional|MILLISECONDS|as400.socket.timeunit|
+|Connection Retries|Number of times to retry establishing the connection internally before throwing an exception and passing back to Kafka connection Manager.|Optional|3|as400.connection.retry|
+|Reconnection Period|Time between internal reconnection retries in ms.|Optional|60000|as400.reconnection.period|
+|Time unit to be used for Reconnection Period|Reconnection period time unit.|Optional|MILLISECONDS|as400.reconnection.timeunit|
+|Connection Time to Live|Max time (Seconds) that the connection can be used.|Optional|0|as400.connection.live|
 |Reconnection Period time out|Time out to be used for connection time out to live|Optional|SECONDS|
 
 -  **Connection (Optional)**

@@ -90,6 +90,7 @@ once the confluent kafka install follows the below steps for connector installat
                 confluent-hub install infoviewsystems/kafka-connect-as400:1.1.1
                 
       2.  Extract the content into the desired location (Preferred: /confluent/share/java or /confluent/share/confluent-hub-component)
+          Generally it will install /confluent/share/confluent-hub-component location so no need to extract it manually.
 
       3.  Start confluent control center using command “confluent local services start”
       
@@ -104,28 +105,56 @@ once the confluent kafka install follows the below steps for connector installat
 
 - **Confluent Setup and connector instalation through docker**
 
-    1.  kafka-connect-as400 connector can be downloaded directly from the confluent-hub using
+    1.  please find the predefine docker-compose.yml file
     
-               confluent-hub install confluentinc/kafka-connect-as400:1.0.0
+              link
 	       
-    2.	Extract the content into the desired location (Example: ./Downloads)
+    2.	Check once the connect service from the above file for 
+    	volumes:
+      - /home/ubuntu/license/:/opt/
+
+       create license directory in local system (ex. mkdir license) and place the as400-license.lic file in the same directory.
+       while running docker-compose.yml file license file i.e as400-license.lic will copy from local to docker container path i.e /opt/.
     
-    3.	Add downloaded zip file path (./Downloads) in the docker file as shown below
+    3.	Now execute below command 
+        
+	docker-compose up -d
+	
+	It will download all images from docker hub and install 
+	
+	once downloading completed verify the status with below command is all services up and running
+	
+        docker-compose ps -a
 
-    ![image](https://user-images.githubusercontent.com/46368616/133751696-3d17ae04-d2fe-468f-a6ee-6634a930e9d3.png)
+        ![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
+
     
-    4.  Run “Docker-compose up -d” to start the confluent kafka platform
+    4.  To verify the license is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
+        
+	docker exec -it connect bash
+	
+	execute below command to validate
+	
+	cd /opt/
+	ls -l
+	
+	find the screenshot for reference
+	
+	![image](https://user-images.githubusercontent.com/88314020/191203434-03ebdc39-d320-4c38-b9de-a595950f89fc.png)
 
-    ![image](https://user-images.githubusercontent.com/46368616/133751829-3e9ae6cd-3eb0-4ff7-8e90-f4811243a1ff.png)
 
-    5.  Check whether all the components are up and running using “docker-compose ps -a”
+    5.  To verify the infoviewsystems-as400-kafka-connect is install or not go through below steps
+         
+	 cd /usr/share/confluent-hub-components/ 
+	 ls -l
+	 find the screenshot for reference
+	 
+	 ![image](https://user-images.githubusercontent.com/88314020/191204410-9d57fe7d-b4ca-4d21-8b57-3238455b2468.png)
 
-    ![image](https://user-images.githubusercontent.com/46368616/133752746-471617dc-876e-4372-9d55-e02e86bc9ea4.png)
+     
+    6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-    
-    6.  Control center should be up and running and can be verified with [http://localhost:9021](http://localhost:9021) 
-
-    ![image](https://user-images.githubusercontent.com/46368616/133752176-02e16a83-6d16-40bd-a209-5ed5d7a5a4a5.png)
+        ![image](https://user-images.githubusercontent.com/46368616/133752176-02e16a83-6d16-40bd-a209-5ed5d7a5a4a5.png)
 
     7.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used. 
 
@@ -138,30 +167,64 @@ once the confluent kafka install follows the below steps for connector installat
 	Managing license in different ways by using different protocols such as S3, HTTP/HTTPS, FTP, FILE, SMB etc. and accessing it through these protocols in 
 	our application needs to configure in connector configuration.
 
-	Available Protocols to load license file/truststore file (HTTP,HTTPS, FTP, SMB, S3, FILE, CLASSPATH_)_
+	Available Protocols to load license file/truststore file (HTTP,HTTPS, FTP, SMB, S3, FILE, CLASSPATH)
 
-	what protocol used to load license file/truststore file that need to be configured as below in application-dev.properties file as below.
+	Based on the protocol parameters needs to be configure.
+	
+	1. FILE
+	find the attached screenshot for reference
+	![image](https://user-images.githubusercontent.com/88314020/191207207-c25650a9-670b-4699-80a0-2a628450903d.png)
+	
+	It requires two values 
+	  a. path 
+	   
+	   This path will be common for license file and truststore file
+	   
+	  b. filename
+               
+	    Provide the license file name
+	    
+	    
+	 2. S3
+	 If the license/truststore file wanted to access from  S3 
+	 Please find the screenshot for reference 
+	 ![image](https://user-images.githubusercontent.com/88314020/191210478-f0869272-96e8-4d1b-b888-4e1b965f32d1.png)
+          
+	  It requires five values to access files from S3
+	   a. S3 bucket path
+	   b. Filename
+	   c. S3 region
+	   d. Access key
+	   f. Secret Key
+	   
+	  3. CLASSPATH
+	    Please find the screenshot for reference
+	    ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
+	    
+	    It requires two values
+	    a. classpath
+	      The path which is used to set CLASSPATH for licence/truststore file
+	      
+	    b. filename
+	    
+	    
+	  4. FTP
 
-	licenseFileProtocol=S3
-
-	Truststore file is used to establish the secure connection with IBM i AS400 system. if secure connection property set as true then needs to configure
-	truststore file protocol in application-dev.properties file as below.
-
-	truststoreFileProtocol=S3
-
-	Following table contains the properties related to protocols requires to be configure:
-
-	| **#** | **Protocol Name** | **Properties** |
-	| --- | --- | --- |
-	| 1 | S3 | s3.bucket=path-to-bucket<br>s3.region=us-east-2<br>s3.accessKey=ENC(encrypted-access-key)<br>s3.secretKey=ENC(encrypted-secret-key)|
-	| 2 | HTTP/HTTPS | http.url=url-URL<br>http.dir.path=license-file-path<br>http.username=ENC(encrypted-user-name)</br>http.password=ENC(encrypted-pwd)|
-	| 3 | FTP | ftp.host=ftp-host<br>ftp.dir.path=path<br>ftp.username=ENC(encrypted-user-name)<br>ftp.password=ENC(encrypted-pwd)
-	| 4 | FILE/SMB | file.Path=path-to-license-file|
+             Please refere the screenshot to configure the values required for FTP protocol inorder to access license/truststore file
+	     ![image](https://user-images.githubusercontent.com/88314020/191214265-88000b8c-17e1-4b16-a945-74b173810fbc.png)
+         
+          5. HTTP
+             
+	     Please refere the screenshot to configure the values required for HTTP protocol inorder to access license/truststore file
+	     ![image](https://user-images.githubusercontent.com/88314020/191215190-d703d1b6-d94c-4b6c-bb34-b5d6eade8762.png)
+	     
+	  6. HTTPS 
+	    
+	    Please refere the screenshot to configure the values required for HTTPS protocol inorder to access license/truststore file
+	    ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
 
 
-
-
-  Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and marketing@infoviewsystems.com 
+Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
   
 **AS400 Connection Configuration Properties**
 -  **Connection**
@@ -171,7 +234,7 @@ once the confluent kafka install follows the below steps for connector installat
 | Name          |Enter a unique label for the connector in your application.| Required                          |AS400SourceConnectorConnector_0|
 |AS400 URL      |AS400 system connection user.                              |    Required                          |null|
 |PASSWORD     |AS400 system connection password.|Required|null|
-|License Path|License file path.|Required|null|
+|License/truststore protocol |Please refere above mentioned license management section |Required|null|
 |IASP|Logical partitions in the systems.|Optional|null|
 |Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|
 |Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|

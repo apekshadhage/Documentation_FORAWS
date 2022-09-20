@@ -309,7 +309,7 @@ Configure these connector properties.
 |Data Queue|Read data queue name.|Required|null|
 |Library|Read data queue library.|Required|null|
 |Key|Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|null|
-|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Required|null|
+|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Optional|null|
 |Keep messages in Queue|Ensure it is unchecked unless the intent is to leave the message in the queue after reading.|Optional|true|
 |Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the specified IBM i file, and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|
 |Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|

@@ -184,6 +184,7 @@ once the confluent kafka install follows the below steps for connector installat
 		![image](https://user-images.githubusercontent.com/88314020/191207207-c25650a9-670b-4699-80a0-2a628450903d.png)
 
 		It requires two values 
+		
 		  a. path 
 
 		   This path will be common for license file and truststore file
@@ -194,6 +195,7 @@ once the confluent kafka install follows the below steps for connector installat
 	    
 	    
 	2. S3
+		 
 		 If the license/truststore file wanted to access from  S3 
 		 
 		 Please find the screenshot for reference 
@@ -201,13 +203,20 @@ once the confluent kafka install follows the below steps for connector installat
 		 ![image](https://user-images.githubusercontent.com/88314020/191210478-f0869272-96e8-4d1b-b888-4e1b965f32d1.png)
 
 		  It requires five values to access files from S3
+		  
 		   a. S3 bucket path
+		   
 		   b. Filename
+		   
 		   c. S3 region
+		   
 		   d. Access key
+		   
 		   f. Secret Key
+		   
 	   
 	 3. CLASSPATH
+	 
 		    Please find the screenshot for reference
 		    
 		    ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
@@ -221,19 +230,19 @@ once the confluent kafka install follows the below steps for connector installat
 		    b. filename
 	    
 	    
-	  4. FTP
+	 4. FTP
 
 		     Please refere the screenshot to configure the values required for FTP protocol inorder to access license/truststore file
 		     
 		     ![image](https://user-images.githubusercontent.com/88314020/191214265-88000b8c-17e1-4b16-a945-74b173810fbc.png)
 
-          5. HTTP
+         5. HTTP
              
 		     Please refere the screenshot to configure the values required for HTTP protocol inorder to access license/truststore file
 		     
 		     ![image](https://user-images.githubusercontent.com/88314020/191215190-d703d1b6-d94c-4b6c-bb34-b5d6eade8762.png)
 	     
-	  6. HTTPS 
+	 6. HTTPS 
 	    
 		    Please refere the screenshot to configure the values required for HTTPS protocol inorder to access license/truststore file
 		    

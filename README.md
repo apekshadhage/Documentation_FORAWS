@@ -248,7 +248,17 @@ once the confluent kafka install follows the below steps for connector installat
 		    
 		    
 		  ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
-	    
+		  
+| Protocols     | Parameters to configure                                           |Mandatory                    configuration keys for parameters |
+|---------------|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
+| FILE| path                                                                 | required                          |as400.license.path                |
+|     |----------------------------------------------------------------------|-----------------------------------|----------------------------------|
+|     |filename                                                               |required                           | license.fileName             |
+| S3|
+|FTP|
+|CLASSPATH|
+|HTTP|
+|HTTPS|
 
 Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
   

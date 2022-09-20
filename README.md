@@ -252,8 +252,7 @@ once the confluent kafka install follows the below steps for connector installat
 | Protocols     | Parameters to configure                                   |Mandatory                    |configuration keys for parameters |
 |---------------|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
 | FILE| path                                                                 | required                          |as400.license.path                |
-|     |                                                                       |                                  |                                   |
-|     |filename                                                               |required                           | license.fileName             |
+|     |  filename                                                             |      required                            |   license.fileName                         
 | S3|
 |FTP|
 |CLASSPATH|

@@ -139,6 +139,7 @@ once the confluent kafka install follows the below steps for connector installat
 		execute below command to validate
 
 		cd /opt/
+		
 		ls -l
 
 		find the screenshot for reference
@@ -325,7 +326,32 @@ Configure these connector properties.
 
 **Note:** Here is a sample property for AS400 source connector configuration
 
-![image](https://user-images.githubusercontent.com/46368616/133767029-3d6e908f-e846-4c68-b180-971f8680c091.png)
+{
+  "name": "AS400SourceConnector_CDCDQ8",
+  "config": {
+    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400SourceConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    "as400.url": "xxxxxxxxxx",
+    "as400.userId": "xxxxx",
+    "as400.password": "xxxxxxx",
+    "as400.secure.connection": "true",
+    "truststore.fileName": "truststore file name",
+    "TLS.password": "xxxxxx",
+    "TLS.isInsecure": "false",
+    "TLS.isKeystoreConfigured": "false",
+    "TLS.isTruststoreConfigured": "true",
+    "as400.license.protocol": "FILE",
+    "as400.license.path": "/home/apeksha/license",
+    "license.fileName": "license file name",
+    "as400.read.dataqueue.name": "abc",
+    "as400.read.dataqueue.library": "Library",
+    "as400.source.format.name": "xyz",
+    "as400.source.file.library": "Library",
+    "source.kafka.topic": "Test",
+    "value.converter.schema.registry.url": "http://localhost:8081"
+  }
+}
 
 **AS400 Data Queue Sink Connector Configuration Properties**
 
@@ -347,8 +373,32 @@ Configure these connector properties.
 
 **Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
 
-
-![image](https://user-images.githubusercontent.com/46368616/133770581-cbc0d2e2-94d2-4882-8fc7-92eaaf34fa8f.png)
+{
+  "name": "AS400DataQueueSinkConnectorConnector_0",
+  "config": {
+    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400DataQueueSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    "topics": "default_ksql_processing_log",
+    "as400.url": "xxxxxxxxxx",
+    "as400.userId": "xxxxx",
+    "as400.password": "xxxxxx",
+    "as400.secure.connection": true,
+    "truststore.fileName": "Info400.trustore",
+    "TLS.password": "xxxxxx",
+    "TLS.isInsecure": false,
+    "TLS.isKeystoreConfigured": false,
+    "TLS.isTruststoreConfigured": true,
+    "as400.license.protocol": "FILE",
+    "as400.license.path": "/home/apeksha/license",
+    "license.fileName": "as400-license.lic",
+    "as400.write.dataqueue.name": "abc",
+    "as400.write.dataqueue.library": "Library",
+    "as400.sink.format.name": "xyz",
+    "as400.sink.file.library": "Library",
+    "value.converter.schema.registry.url": "http://localhost:8081"
+  }
+}
 
 **AS400 Program Call Sink Connector Configuration Properties**
 

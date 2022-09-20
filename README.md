@@ -96,7 +96,7 @@ once the confluent kafka install follows the below steps for connector installat
       
       ![image](https://user-images.githubusercontent.com/46368616/133743614-0642b415-96c1-49c2-9501-507388935129.png)
       
-      4.  Control center should be up and running and can be verified with [http://localhost:9021](http://localhost:9021)
+      4.  Control center should be up and running and can be verified with http://{HOST}:9021
         
       ![image](https://user-images.githubusercontent.com/46368616/133744830-27cd0bc2-4bf0-4f4c-8b97-c8f84a21bad8.png)
       
@@ -110,10 +110,12 @@ once the confluent kafka install follows the below steps for connector installat
               link
 	       
     2.	Check once the connect service from the above file for 
-    	volumes:
-      - /home/ubuntu/license/:/opt/
+    
+    	 volumes:
+       - /home/ubuntu/license/:/opt/
 
        create license directory in local system (ex. mkdir license) and place the as400-license.lic file in the same directory.
+       
        while running docker-compose.yml file license file i.e as400-license.lic will copy from local to docker container path i.e /opt/.
     
     3.	Now execute below command 

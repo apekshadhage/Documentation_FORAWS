@@ -150,9 +150,9 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-        ![image][](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
+        ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
 
-    7.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used. 
+    7.  RPA Sink connector ready to configure now. And here are the sample configurations to be used. 
 
 
 
@@ -248,25 +248,11 @@ Configure these connector properties.
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
 |Macro File Protocol    |refer macro file management section |Optional|FILE|as400.MacroFileProtocol|
 |Key String |Enter a comma seperated list of key strokes, input field locations, or input field text, to be executed by the AS400/IBMi System.
-
 Key strokes are defined by being placed inside of brackets. Ex. '[enter]', a full list of valid key strokes can be found starting at line 67 [here](https://github.com/tn5250j/tn5250j/blob/master/src/org/tn5250j/keyboard/KeyMapper.java).
-
 Defining the current input field is done by placing the text SET_INFIELD inside brackets, followed by the x and y coordinates of the input field. Ex. [SET_INFIELD 3 4]
-
-Defining an area of the screen a user wishes to grab is done by placing the text GET_SCREEN inside brackets, followed by the top left x and top left y coordinates of the input field you wish to grab, and then the width and height of the area. The final string inside the brackets is used to define the name of the output parameter a user wishes to store the text in. This will be stored in the attributes.screenOutput field of the mule message as a java HashMap.
-
-Ex. [GET_SCREEN 9 10 10 3 output_test]
-
-Defining when the user wants to run their python macro file is done by placing the text MACRO inside brackets.
-
-Ex. [MACRO]
-
-Input field text is defined by placing a string of whatever you wish to input into the comma seperated list.
-
-FULL EXAMPLE: "[enter],[enter],4,[SET_INFIELD 2 1],3,[enter],[enter]"|Required|null|as400.KeyString|
-|Input Parameters|Enter key-value pairs to replace pre-set variables (defined by placing a ':' before a variable name inside '< >' brackets corresponding to the key from the key-value pair) in the Key String.
-
-Ex. {"value": "4"} will replace :< value > in the Key String|Optional|null|as400.InputParameters|
+Defining an area of the screen a user wishes to grab is done by placing the text GET_SCREEN inside brackets, followed by the top left x and top left y coordinates of the input field you wish to grab, and then the width and height of the area. The final string inside the brackets is used to define the name of the output parameter a user wishes to store the text in. This will be stored in the attributes.screenOutput field of the mule message as a java HashMap.Ex. [GET_SCREEN 9 10 10 3 output_test]
+Defining when the user wants to run their python macro file is done by placing the text MACRO inside brackets.Ex. [MACRO]Input field text is defined by placing a string of whatever you wish to input into the comma seperated list.FULL EXAMPLE: "[enter],[enter],4,[SET_INFIELD 2 1],3,[enter],[enter]"|Required|null|as400.KeyString|
+|Input Parameters|Enter key-value pairs to replace pre-set variables (defined by placing a ':' before a variable name inside '< >' brackets corresponding to the key from the key-value pair) in the Key String.Ex. {"value": "4"} will replace :< value > in the Key String|Optional|null|as400.InputParameters|
 |Sink Target Topic|Push Response back to kafka topic after execute script operation|required|null|sink.kafka.topic|
 |Kafka Partition Key|Kafka Partition Key|Optional|null|sink.kafka.partition.key|
 

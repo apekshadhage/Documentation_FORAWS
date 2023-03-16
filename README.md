@@ -218,47 +218,21 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters |
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
 | Name          |Enter a unique label for the connector in your application.| Required                          |AS400RPASinkConnector_0|name|
-|User Name     |Enter your AS400 account user name for login.               |    Required                          |null|as400.url|
-|User Name X Position |AS400 System user                                          |Required     |null|as400.userId|
-|User Name Y Position |AS400 system connection password.|Required|null|as400.password|
-|Password|Please refere above mentioned license management section |Required|null|as400.license.protocol|
-|IASP|Logical partitions in the systems.|Optional|null|as400.iasp|
-|Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|as400.libraries|
-|Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|as400.secure.connection|
-|Socket Timeout|Socket Timeout, ms. Default value of -1 means the default JVM SO_TIMEOUT will be used|Optional|-1|as400.socket.timeout|
-|Time unit to be used for Socket Timeout|Socket Timeout time unit|Optional|MILLISECONDS|as400.socket.timeunit|
-|Connection Retries|Number of times to retry establishing the connection internally before throwing an exception and passing back to Kafka connection Manager.|Optional|3|as400.connection.retry|
-|Reconnection Period|Time between internal reconnection retries in ms.|Optional|60000|as400.reconnection.period|
-|Time unit to be used for Reconnection Period|Reconnection period time unit.|Optional|MILLISECONDS|as400.reconnection.timeunit|
-|Connection Time to Live|Max time (Seconds) that the connection can be used.|Optional|0|as400.connection.live|
-|Reconnection Period time out|Time out to be used for connection time out to live|Optional|SECONDS|
+|User Name     |Enter your AS400 account user name for login.               |    Required                          |null|as400.username|
+|User Name X Position |The X position of the user name entry field at the login screen.|Required     |null|as400.usernameXPosition|
+|User Name Y Position |The Y position of the user name entry field at the login screen.|Required|null|as400.usernameYPosition|
+|Password|Enter your AS400 account password for login.|Required|null|as400.password|
+|Password X Position|The X position of the password entry field at the login screen.|Required|null|as400.passwordXPosition|
+|Password Y Position|The Y position of the password entry field at the login screen.|Required|null|as400.passwordYPosition|
+|Initial Key String|Enter an optional formatted key string to naviagte the AS400 to an ideal screen after login.|Optional|null|as400.initialKeyString|
+|Host|Enter the IBM i endpoint.|Optional|localhost|as400.host|
+|Port|Enter the port number of your IBM i endpoint.|Optional|-1|as400.port|
+|SSL Type|Enter the SSL Type of your IBM i endpoint if it requires a secure connection.|Optional|None|as400.sslType|
+|Debug Mode|Enter either True or False. Entering true means that the connector will print the screen after any key is pressed. False means that it will not.|Optional|False|as400.debug|
+|Num Attempts|Number of connection retries internally within AS400 connector configuration before the exception is raised to kafka runtime and connection management.|Optional|1|as400.numAttempts|
+|Time Between Attempts (ms)|The amount of time inbetween connection retry attempts.|Optional|300|as400.TimeBetweenAttempts|
 
--  **Connection (Optional)**
-
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|----------------------------------|
-|Operation Type |An Operation type to be done on AS400 FILE = 0, PRINT = 1,COMMAND = 2,DATAQUEUE = 3, DATABASE = 4, RECORDACCESS = 5, CENTRAL = 6, SIGNON = 7|Optional|2|as400.operation.type|
-|CCSID|-|Optional|0|as400.ccsid|
-|Pre Start Count Data Q|-|Optional|2|as400.prestart.count.dq|
-|Pre Start Count Command|-|Optional|2|as400.prestart.count.command|
-|Cleanup Interval|-|Optional|2|as400.cleanup.interval|
-|Max Connection|Maximum connections allowed.|Optional|5|as400.max.connection|
-|Max Inactivity|Maximum time to inactive the session for connection.|Optional|10|as400.max.inactivity|
-|Max Lifetime|Maximum lifetime for connection.|Optional|60000|as400.max.lifetime|
-|Max Use Count|-|Optional|10|as400.max.usecount|
-|Max Use Time|-|Optional|30000|as400.max.usetime|
-|Pre-Test Connection|-|Optional|true|as400.pretest.connection|
-|Run Maintenance|-|Optional|true|as400.run.maintenance|
-|Thread Used|-|Optional|true|as400.thread.used|
-|Keep Alive|-|Optional|true|as400.keep.alive|
-|Login Timeout|-|Optional|0|as400.login.timeout|
-|Receive Buffer Size|-|Optional|1000|as400.receive.buffer.size|
-|Send Buffer Size|-|Optional|1000|as400.send.buffer.size|
-|So Linger|-|Optional|0|as400.so.linger|
-|So Timeout|-|Optional|0|as400.so.timeout|
-|TCP No Delay|-|Optional|true|as400.tcp.nodelay|
-
-## AS400 Data Queue Sink Connector Configuration Properties
+## AS400 RPA Sink Connector Configuration Properties
 
 Configure these connector properties.
 

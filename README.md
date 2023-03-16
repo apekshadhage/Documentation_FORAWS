@@ -1,22 +1,14 @@
 # USER GUIDE
 
-# IBM i AS/400 Connector (Source and Sink) for Confluent Platform
+# IBM i AS/400 RPA Sink Connector for Confluent Platform
 
 **Introduction** 
 
-Infoview Systems AS400Gateway suite of products eliminates the stress and impact of IBM i / AS400 legacy system integration on development teams, minimizes the time and resources put into building integrations by hand, and enables non-IBM i developers to unlock legacy business logic and data directly from the comfort of their modern integration development stack. Certified and rigorously tested by Confluent, the connector was designed to accelerate IBM i / AS400 integrations with other systems and services.
-We are a global cross-platform service team with a unique fluency in legacy and modern technology stacks, including Confluent and IBM i / AS400. Infoview’s dedicated customer success representatives coordinate just-in-time technical assistance and support to client teams ensuring you have all the help you may need, when you need it. We are more than happy to provide a trial license for our products, participate in discovery sessions, run live demos for typical integration scenarios with our Gateway products, as well as assist with or perform a proof of concept based on particular use cases.
+The purpose of As400 RPA connector is to enable IBM i (AS/400) integrations with other components.
 
-[Contact us](http://www.infoviewsystems.com/contact-us) for connector pricing info, trial license, or support questions.
+The IBM AS/400 was first introduced in 1988 and evolved into a very stable modern all-purpose integrated solution that requires little or no management. The system is able to run core line of business applications securely and predictably, focusing on quality of service and availability and offering a compelling total cost of ownership for integrated on-premises solutions. IBM made several changes to the server and OS name (iSeries, System i, IBM i, Power Systems for i) but most still refer to it as AS/400.
 
-**IBM i / AS400 Connector for Confluent Overview** 
-
-The IBM i / AS400 was first introduced in 1988, and since then has evolved keeping pace with new concepts and technologies, it is a very stable and robust modern all-purpose system that surprisingly  requires little or no management. The system is able to run core line of business applications securely and predictably, focusing on quality of service and availability and offering a compelling total cost of ownership for integrated on-premises solutions. IBM made several changes to the server and OS name (iSeries, System i, IBM i, Power Systems for i) but most still refer to it as AS/400.
-The IBM i platform offers several integration options including PHP, Java, WebSphere, specialized lightweight web service containers, FTP, SMTP / emails, DB2 interfaces, data queues, integrated file systems - IFS, as well as an abundance of products offered by IBM and Third-party vendors. The main benefit of using "native" options such as Program Calls and Data Queues is that IBM i development teams do not have to learn another language or purchase and support another technology in order to build the integration layer and can easily communicate with external systems using only traditional development tools.
-The Program Call is the most straightforward and low code option for exposing IBM i business logic as a reusable asset. The IBM i connector enables direct program calls from Kafka applications, passing parameters into the program and receiving the results back in real time.
-Data queues are native IBM i objects designed primarily for inter-process communications. They are lightweight persistent queues that support processing by a key and support order by FIFO or LIFO organization. The majority of integration use cases can be implemented with the pair of request and response Data Queues. The source system places a message to the request data queue and waits for an acknowledgement message to be placed on the response data queue. The target system receives and processes a message from the request data queue then places the acknowledgement to the response data queue.
-The IBM i connector makes it easy to build Kafka code that talks to IBM i applications. Infoview Systems also developed the IBM i ‘Web Transaction Framework’ that makes it very fast and easy to develop IBM i code that communicates with Kafka.
-
+The IBM i platform offers a number of integration options including PHP, Java, WebSphere, specialized lightweight web service containers, FTP, SMTP / emails, DB2 interfaces, data queues, integrated file systems - IFS, as well as number of products offered by IBM and Third party vendors. The main benefit of using "native" options such as Program Calls and Data Queues is that IBM i development team does not have to learn another language or purchase and support another technology in order to build integration layer, and can easily communicate with external systems using only traditional development tools.
 
 **Prerequisites**
 
@@ -58,11 +50,10 @@ The IBM i connector is an operation-based connector, which means that when you a
 connector to your Kafka connect cluster, you need to configure a specific operation the connector
 is intended to perform. The connector supports the following operations:
 
-| Operation                          | Version       |
+| Operation                          | Description       |
 | -----------------------------------|---------------|
-| Read Data Queue (Message Source)   | Perpetually listen for new messages arriving to specific data queue.|
-| Write to Data Queue                | Write messages to data queue.|
-| Program Call                       | Execute IBM i program.       |
+| Execute script  | Execute a given key string to perform tasks in the IBMi system and/or run a predefined python macro to peform the tasks.|
+
 
 **Confluent Setup**
     

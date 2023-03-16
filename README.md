@@ -1,4 +1,4 @@
-# USER GUIDE
+# User Manual
 
 # IBM i AS/400 RPA Sink Connector for Confluent Platform
 
@@ -54,8 +54,7 @@ is intended to perform. The connector supports the following operations:
 | -----------------------------------|---------------|
 | Execute script  | Execute a given key string to perform tasks in the IBMi system and/or run a predefined python macro to peform the tasks.|
 
-
-**Confluent Setup**
+## Confluent Setup
     
 -  **Steps to setup confluent kafka standalone environment in local system**
 
@@ -89,12 +88,12 @@ once the confluent kafka install follows the below steps for connector installat
       
       4.  Control center should be up and running and can be verified with http://{HOST}:9021
         
-      ![image](https://user-images.githubusercontent.com/46368616/133744830-27cd0bc2-4bf0-4f4c-8b97-c8f84a21bad8.png)
+      ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
       
-      5.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used.
+      5.  Sink connector is ready to configure now. And here are the sample configurations to be used.
 
 
-- **Confluent Setup and connector instalation through docker**
+- **Confluent Setup and connector installation through docker**
 
     1.  please find the predefine docker-compose.yml file
     
@@ -151,94 +150,55 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-        ![image](https://user-images.githubusercontent.com/46368616/133752176-02e16a83-6d16-40bd-a209-5ed5d7a5a4a5.png)
+        ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
 
     7.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used. 
 
 
 
-  **License Management:**
+## Macro File Management:
 
-	The IBM i connector requires a license file &quot;as400-license.lic&quot; from Infoview to enable access to specific IBM i system(s).
-
-	Managing license in different ways by using different protocols such as S3, HTTP/HTTPS, FTP, FILE, SMB etc. and accessing it through these protocols in 
+The IBM i connector requires a macro file to execute operation on IBM i system(s). Accessing file in different ways by using different protocols such as S3,FILE and CLASSPATH etc. and accessing it through these protocols in our application needs to configure in connector configuration. Available Protocols to load macro(python script) file (S3, FILE, CLASSPATH). Based on the protocol parameters needs to be configure.
 	
-	our application needs to configure in connector configuration.
-
-	Available Protocols to load license file/truststore file (HTTP,HTTPS, FTP, SMB, S3, FILE, CLASSPATH)
-
-	Based on the protocol parameters needs to be configure.
+1. FILE
 	
-	1. FILE
-	
-		find the attached screenshot for reference
+    find the attached screenshot for reference
 		
-		![image](https://user-images.githubusercontent.com/88314020/191207207-c25650a9-670b-4699-80a0-2a628450903d.png)
+	![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/file.png)
 
-		It requires two values 
+	It requires two values 
 		
-		  a. path 
+	a. path 
 
-		   This path will be common for license file and truststore file
+	macro file path or python script path
 
-		  b. filename
+	b. filename
 
-		    Provide the license file name
+	Provide the macro file name
 		    
-	2. S3
+2. S3
 	
-		If the license/truststore file wanted to access from  S3 
+	If the macro file wanted to access from  S3. Please find the screenshot for reference 
 		 
-		Please find the screenshot for reference 
-		 
-		 ![image](https://user-images.githubusercontent.com/88314020/191210478-f0869272-96e8-4d1b-b888-4e1b965f32d1.png)
+	![image]()https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/s3.png
 
-		It requires five values to access files from S3
+	It requires five values to access files from S3
 		  
-		   a. S3 bucket path
+	a. S3 bucket path
 		   
-		   b. Filename
+	b. Filename
 		   
-		   c. S3 region
+	c. S3 region
 		   
-		   d. Access key
+	d. Access key
 		   
-		   f. Secret Key 
+	f. Secret Key 
 		   
-	3. CLASSPATH
-	
-		Please find the screenshot for reference
-		    
-		  ![image](https://user-images.githubusercontent.com/88314020/191212958-386f01f2-ba5c-4d5f-a6fc-89ab748406d4.png)
-
-		It requires two values
-		    
-		    a. classpath
-		    
-		       The path which is used to set CLASSPATH for licence/truststore file
-
-		    b. filename
-	4. FTP
-	 
-		Please refere the screenshot to configure the values required for FTP protocol inorder to access license/truststore file
-		     
-		     
-		  ![image](https://user-images.githubusercontent.com/88314020/191214265-88000b8c-17e1-4b16-a945-74b173810fbc.png)
-		     
-	5. HTTP
-	 
-		 Please refere the screenshot to configure the values required for HTTP protocol inorder to access license/truststore file
-		  
-		     
-		  ![image](https://user-images.githubusercontent.com/88314020/191215190-d703d1b6-d94c-4b6c-bb34-b5d6eade8762.png)
-		  
-	     	
-	6. HTTPS
-	 
-		Please refere the screenshot to configure the values required for HTTPS protocol inorder to access license/truststore file
-		    
-		    
-		  ![image](https://user-images.githubusercontent.com/88314020/191217041-2324a0e6-b3c3-4e23-9eb0-fc603f65d0c5.png)
+3. CLASSPATH	    
+    
+    It requires one value to aceess files from Classpath
+    
+	a. filename
 		  
 
 Based on protocol type needs to configure below properties
@@ -246,16 +206,13 @@ Based on protocol type needs to configure below properties
 
 | Protocols     | Parameters to configure                                   |Mandatory                    |configuration keys for parameters |
 |:--------------:|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
-| FILE| path <br> filename                                                   | required <br>  required           |as400.license.path<br> license.fileName|
-| S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key     | required<br>required<br>required<br>required<br>required|s3.bucket<br>license.fileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
-|FTP|Host<br>directory path<br>filename<br>username<br>password|required<br>required<br>required<br>required<br>required|ftp.host<br>ftp.dir.path<br>license.fileName<br>ftp.username<br>ftp.password|
-|CLASSPATH|license/truststore classpath<br>filename|required<br>required|license.classpath<br>license.fileName|
-|HTTP|HTTP Host<br>HTTP Directory<br>filename<br>HTTP Username<br>HTTP Password|required<br>required<br>required<br>required<br>required|http.url<br>http.dir.path<br>license.fileName<br>http.username<br>http.password|
-|HTTPS|HTTPS Host<br>HTTPS Directory<br>filename<br>HTTPS Username<br>HTTPS Password|required<br>required<br>required<br>required<br>required|https.url<br>https.dir.path<br>license.fileName<br>https.username<br>https.password|
+| FILE| path <br> filename                                                   | required <br>  required           |as400.MaroFilePath<br> as400.MacroFileName|
+| S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key     | required<br>required<br>required<br>required<br>required|s3.bucket<br>as400.MacroFileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
+|CLASSPATH|filename|required|as400.MacroFileName|
 
 Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
   
-**AS400 Connection Configuration Properties**
+## AS400 RPA Connection Configuration Properties
 -  **Connection**
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters |
@@ -301,59 +258,7 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 |So Timeout|-|Optional|0|as400.so.timeout|
 |TCP No Delay|-|Optional|true|as400.tcp.nodelay|
 
-**AS400 Source Connector Configuration Properties**
-
-Configure these connector properties.
-
-![image](https://user-images.githubusercontent.com/46368616/133764594-8d2caf1b-be1c-4745-8a72-c413f4e6e8fc.png)
-
-
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Data Queue|Read data queue name.|Required|null|as400.read.dataqueue.name|
-|Library|Read data queue library.|Required|null|as400.read.dataqueue.library|
-|Key|Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|null|as400.read.dataqueue.key|
-|Key Search Type|Must be specified for keyed data queues. For reading any message from data queue, available search types are equal,not equal,greater than,less than,greater than or equal,less than or equal.|Optional|null|as400.read.dataqueue.key.search.type|
-|Keep messages in Queue|Ensure it is unchecked unless the intent is to leave the message in the queue after reading.|Optional|true|as400.source.keep.message|
-|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the specified IBM i file, and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|as400.source.format.name|
-|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|as400.source.file.library|
-|Number of Consumers|Number of consumers.|Optional|4|as400.source.consumer.numbers|
-
-- **Source Response**
-
-
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Response Data Queue|Will update the response back to the data queue.|Optional|null|as400.write.dataqueue.name|
-|Response Data Queue Library|Response data queue library.|Optional|null|as400.write.dataqueue.library|
-|Response Data Queue Expression|Response data queue Expression.|Optional|null|as400.response.dataqueue.expression|
-
-**Note:** Here is a sample property for AS400 source connector configuration
-```
-{
-  "name": "AS400SourceConnector_CDCDQ8",
-  "config": {
-    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400SourceConnector",
-    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
-    "as400.url": "xxxxxxxxxx",
-    "as400.userId": "xxxxx",
-    "as400.password": "xxxxxxx",
-    "as400.secure.connection": "false",
-    "as400.license.protocol": "FILE",
-    "as400.license.path": "/home/ubuntu/license",
-    "license.fileName": "as400-license.lic",
-    "as400.read.dataqueue.name": "abc",
-    "as400.read.dataqueue.library": "Library",
-    "as400.source.format.name": "xyz",
-    "as400.source.file.library": "Library",
-    "source.kafka.topic": "Test",
-    "value.converter.schema.registry.url": "http://localhost:8081"
-  }
-}
-```
-
-**AS400 Data Queue Sink Connector Configuration Properties**
+## AS400 Data Queue Sink Connector Configuration Properties
 
 Configure these connector properties.
 
@@ -395,77 +300,62 @@ Configure these connector properties.
 }
 ```
 
-**AS400 Program Call Sink Connector Configuration Properties**
 
-Configure these connector properties
+## Schema Registry Configuration
+Schema Registry must be configured for Schema Converters to avoid problems with registration updated Schemas after updating Format File
 
-![image](https://user-images.githubusercontent.com/88314020/191261271-f63a4fdb-e1ff-4f97-a9f1-5fd9252aa630.png)
-
-
-
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Program Name   |AS400 program name|Required|null|as400.program.name|
-|Program Library|Program library name|Required|null|as400.program.library|
-|Program Parameters|List of definitions and value references of program parameters|Optional|null|as400.program.parameters|
-|Procedure Name|Name of the procedure|Optional|null|as400.procedure.name|
-|Procedure Returns Value|Indicator if the program procedure returns a value.|Optional|false|as400.procedure.returnsValue|
-|Threadsafe|Indicator if the program is thread safe|Optional|false|as400.threadsafe|
-|Sink Target Topic|Sink target topic is a topic to push program call output|Required|null|sink.kafka.topic|
-|Kafka Partition Key|Kafka partition key to push record to topic in the specific location|Required|null|sink.kafka.partition.key|
-
-**Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
-
-
+**Avro**
+```properties
+io.confluent.connect.avro.AvroConverter
 ```
-{
-  "name": "AS400ProgramCallSinkConnector_POSTORDSP",
-  "config": {
-    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400ProgramCallSinkConnector",
-    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-    "topics": "POSTORDSP_INPUT",
-    "as400.url": "xxxxxxxxxx",
-    "as400.userId": "xxxx",
-    "as400.password": "xxxx",
-    "as400.secure.connection": "false",
-    "as400.license.protocol": "FILE",
-    "as400.license.path": "/home/ubuntu/license",
-    "license.fileName": "as400-license.lic",
-    "as400.program.name": "POSTORDSP",
-    "as400.program.library": "Library",
-    "as400.program.parameters": "{ }",
-    "as400.procedure.name": "POSTORDERS",
-    "as400.procedure.returnsValue": "false",
-    "as400.threadsafe": "false",
-    "sink.kafka.topic": "POSTORDSP_OUTPUT",
-    "value.converter.schemas.enable": "false"
-  }
-}
+**JSON Schema**
+```properties
+io.confluent.connect.json.JsonSchemaConverter
 ```
 
-**TLS Configuration**
+Schema Registry can be configured in 3 ways:
+1. Through Confluent Control Center
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|
-|Truststore|Truststore is used to store jks type of certificates from Certified Authorities (CA) that verify the certificate presented by the server in SSL connection|
+Open _Topic_ menu and choose topic where new messages publish. Then click on _Schema_ field. You will be able to see already registered schema. Click on pull down menu **_..._** and choose _Compatibility settings_.
 
+![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/9db2caa99c34b62ff3d6fe5a6ae69564d3a11532/docs/AS400Gateway/Kafka/images/schema-registry-topic-settings.png)
 
-![image](https://user-images.githubusercontent.com/46368616/133774025-d397bcd4-b88f-49a7-b06f-305b0dac9f5b.png)
+Then choose compatibility level as **_NONE_** and save changes
 
+![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/9db2caa99c34b62ff3d6fe5a6ae69564d3a11532/docs/AS400Gateway/Kafka/images/schema-compatibility-settings.png)
 
-**Truststore**
+These changes will apply for only edited Topic. If you have another topics where messages published with schema you also need to repeat these steps for them.
+If you don't want to repeat these steps for every new topic, use other options below. 
 
-| Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
-|---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Truststore Filename| truststore file name|optional|null|truststore.fileName|
-|Password|The password used to protect the trust store.|Optional|null|TLS.password|
-|Insecure|If true, no certificate validations are performed, rendering connections vulnerable to attacks. Use at your own risk.|Optional|false|TLS.isInsecure|
-|IsKeystoreConfigured|-|Optional|true|TLS.isKeystoreConfigure|
-|IsTruststoreConfigured|-|Optional|true|TLS.isTruststoreConfigured|
+2. Through Confluent Platform properties file
 
+Open installation folder for Confluent and go to _/etc/schema-registry/_ folder
 
+Edit schema-registry.properties file with following command
+```console
+nano schema-registry.properties
+```
 
-**Contact Us**
+Add new property in the end of file
+```properties
+schema.compatibility.level=none
+```
+Save changes and restart Confluent Platform if needed to apply changes
+Compatibility will define as **_NONE_** as default for new schemas
+
+3. Through Docker Compose File
+
+Add new property for _schema-registry_ container in _environment_ section
+```properties
+SCHEMA_REGISTRY_SCHEMA_COMPATIBILITY_LEVEL: none
+```
+
+Then restart docker container with following command if needed to apply changes
+```console
+docker-compose up -d
+```
+Compatibility will define as **_NONE_** as default for new schemas
+
+## Contact Us
 
 [Contact us](http://www.infoviewsystems.com/contact-us) for connector pricing info, trial license, or support questions.

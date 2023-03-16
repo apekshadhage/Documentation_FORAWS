@@ -159,6 +159,12 @@ once the confluent kafka install follows the below steps for connector installat
 ## Macro File Management:
 
 The IBM i connector requires a macro file to execute operation on IBM i system(s). Accessing file in different ways by using different protocols such as S3,FILE and CLASSPATH etc. and accessing it through these protocols in our application needs to configure in connector configuration. Available Protocols to load macro(python script) file (S3, FILE, CLASSPATH). Based on the protocol parameters needs to be configure.
+ 
+ **Macro File**
+ 
+ Enter the name of the python macro file that was placed into the above mentioned location
+ The session variables, which holds all information about the current session, can be referenced as '_session' in the python macro. It is placed into the script beforehand by the module.
+
 	
 1. FILE
 	
@@ -236,40 +242,63 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 
 Configure these connector properties.
 
-![image](https://user-images.githubusercontent.com/46368616/133767545-f4f0bf51-c9cb-4435-ac0f-04a5190f3502.png)
+![image]([https://user-images.githubusercontent.com/46368616/133767545-f4f0bf51-c9cb-4435-ac0f-04a5190f3502.png](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/Sink%20Parameters%20with%20writing%20response%20back%20params.png))
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-|Data Queue     |Write data queue name.|Required|null|as400.write.dataqueue.name|
-|Library        |Write data queue library.|Required|null|as400.write.dataqueue.library|
-|Is Keyed DataQ |Must be specified for keyed data queues and blank for non-keyed data queues. For reading any message from data queue.|Optional|false|as400.write.dataqueue.key|
-|Format File Name|Optional parameter allows treating data queue entry as an externally defined data structure. When defined, the connector will dynamically retrieve the record format from the the specified IBM i file and parse the received data queue entry into the map of field name / value pairs. The connector will perform the type conversion, supporting all types such as packed, date / time etc.|Optional|null|as400.sink.format.name|
-|Format File Library|When format file is specified, the format file library can also be specified, otherwise the format file will be located based on the connection library list.|Optional|null|as400.sink.file.library|
-|DQ Entry Length|Max DQ Entry Length. When specified and greater than 0, the parameter value will be truncated to fit the max length.|Optional|0|as400.dq.entry.length|
-|DQ Key Length|Max DQ Key Length. When specified and greater than 0, the parameter value will be used (instead of dynamically retrieving it from DQ definitions on the server).|Optional|null|as400.dq.key.length|
+|Macro File Protocol    |refer macro file management section |Optional|FILE|as400.MacroFileProtocol|
+|Key String |Enter a comma seperated list of key strokes, input field locations, or input field text, to be executed by the AS400/IBMi System.
 
+Key strokes are defined by being placed inside of brackets. Ex. '[enter]', a full list of valid key strokes can be found starting at line 67 [here](https://github.com/tn5250j/tn5250j/blob/master/src/org/tn5250j/keyboard/KeyMapper.java).
+
+Defining the current input field is done by placing the text SET_INFIELD inside brackets, followed by the x and y coordinates of the input field. Ex. [SET_INFIELD 3 4]
+
+Defining an area of the screen a user wishes to grab is done by placing the text GET_SCREEN inside brackets, followed by the top left x and top left y coordinates of the input field you wish to grab, and then the width and height of the area. The final string inside the brackets is used to define the name of the output parameter a user wishes to store the text in. This will be stored in the attributes.screenOutput field of the mule message as a java HashMap.
+
+Ex. [GET_SCREEN 9 10 10 3 output_test]
+
+Defining when the user wants to run their python macro file is done by placing the text MACRO inside brackets.
+
+Ex. [MACRO]
+
+Input field text is defined by placing a string of whatever you wish to input into the comma seperated list.
+
+FULL EXAMPLE: "[enter],[enter],4,[SET_INFIELD 2 1],3,[enter],[enter]"|Required|null|as400.KeyString|
+|Input Parameters|Enter key-value pairs to replace pre-set variables (defined by placing a ':' before a variable name inside '< >' brackets corresponding to the key from the key-value pair) in the Key String.
+
+Ex. {"value": "4"} will replace :< value > in the Key String|Optional|null|as400.InputParameters|
+|Sink Target Topic|Push Response back to kafka topic after execute script operation|required|null|sink.kafka.topic|
+|Kafka Partition Key|Kafka Partition Key|Optional|null|sink.kafka.partition.key|
 
 **Note:** Here is a sample property for AS400 Data Queue Sink connector configuration
 ```
 {
-  "name": "AS400DataQueueSinkConnectorConnector_0",
+ "name": "AS400RPASinkConnectorConnector_0",
   "config": {
-    "connector.class": "com.infoviewsystems.kafka.connect.as400.core.AS400DataQueueSinkConnector",
+    "connector.class": "com.infoviewsystems.kafka.connect.as400.rpa.core.AS400RPASinkConnector",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
-    "topics": "default_ksql_processing_log",
-    "as400.url": "xxxxxxxxxx",
-    "as400.userId": "xxxxx",
-    "as400.password": "xxxxxx",
-    "as400.secure.connection": "false",
-    "as400.license.protocol": "FILE",
-    "as400.license.path": "/home/apeksha/license",
-    "license.fileName": "as400-license.lic",
-    "as400.write.dataqueue.name": "abc",
-    "as400.write.dataqueue.library": "Library",
-    "as400.sink.format.name": "xyz",
-    "as400.sink.file.library": "Library",
-    "value.converter.schema.registry.url": "http://localhost:8081"
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "topics": "RPA",
+    "as400.host": "172.20.34.10",
+    "as400.username": "OROWADER",
+    "as400.usernameXPosition": "53",
+    "as400.usernameYPosition": "8",
+    "as400.password": "DOAROW07",
+    "as400.passwordXPosition": "53",
+    "as400.passwordYPosition": "9",
+    "as400.initialKeyString": "addlible apanda,[enter],[enter],addlible infocdccom,[enter],[enter]",
+    "as400.port": "-1",
+    "as400.sslType": "NONE",
+    "as400.debug": "true",
+    "as400.numAttempts": "1",
+    "as400.TimeBetweenAttempts": "300",
+    "as400.MacroFileProtocol": "FILE",
+    "as400.MacroFilePath": "/home/apeksha/macro",
+    "as400.MacroFileName": "addItems.py",
+    "as400.KeyString": "call cdcordcmtc,[enter],[SET_INFIELD 29 10],:<uri>,[enter],[enter],[pf6],[MACRO],[pf10],[GET_SCREEN 15 4 8 1 orderNum],[GET_SCREEN 2 24 13 1  orderStatus],[pf12],[pf3]",
+    "as400.InputParameters": "uri=orderId",
+    "sink.kafka.topic": "sinktopic",
+    "value.converter.schemas.enable": "false"
   }
 }
 ```

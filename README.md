@@ -150,7 +150,7 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-        ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
+        ![image][](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
 
     7.  Source and Sink connectors are ready to configure now. And here are the sample configurations to be used. 
 
@@ -217,11 +217,11 @@ Please contact Infoview Systems Connector support team at **(734) 293-2160** and
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters |
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
-| Name          |Enter a unique label for the connector in your application.| Required                          |AS400SourceConnectorConnector_0|name|
-|AS400 URL      |AS400 system connection url.                              |    Required                          |null|as400.url|
-|User Id        |AS400 System user                                          |Required     |null|as400.userId|
-|PASSWORD     |AS400 system connection password.|Required|null|as400.password|
-|License/truststore protocol |Please refere above mentioned license management section |Required|null|as400.license.protocol|
+| Name          |Enter a unique label for the connector in your application.| Required                          |AS400RPASinkConnector_0|name|
+|User Name     |Enter your AS400 account user name for login.               |    Required                          |null|as400.url|
+|User Name X Position |AS400 System user                                          |Required     |null|as400.userId|
+|User Name Y Position |AS400 system connection password.|Required|null|as400.password|
+|Password|Please refere above mentioned license management section |Required|null|as400.license.protocol|
 |IASP|Logical partitions in the systems.|Optional|null|as400.iasp|
 |Library List|List of libraries, in addition to the library list associated with the user id. The libraries must be separated with comma and will be added to the top of the library list.|Optional|null|as400.libraries|
 |Secure Connection|Enable secure connection with AS400 over encrypted channel.|Optional|False|as400.secure.connection|

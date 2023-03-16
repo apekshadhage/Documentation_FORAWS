@@ -247,14 +247,8 @@ Configure these connector properties.
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|
 |Macro File Protocol    |refer macro file management section |Optional|FILE|as400.MacroFileProtocol|
-|Key String |Enter a comma seperated list of key strokes, input field locations, or input field text, to be executed by the AS400/IBMi System.
- Key strokes are defined by being placed inside of brackets. Ex. '[enter]', a full list of valid key strokes can be found starting at line 67 here.
+|Key String |Enter a comma seperated list of key strokes, input field locations, or input field text, to be executed by the AS400/IBMi System. Key strokes are defined by being placed inside of brackets. Ex. '[enter]', a full list of valid key strokes can be found starting at line 67 here.
  Defining the current input field is done by placing the text SET_INFIELD inside brackets, followed by the x and y coordinates of the input field.
- Ex. [SET_INFIELD 3 4]
-Defining an area of the screen a user wishes to grab is done by placing the text GET_SCREEN inside brackets, followed by the top left x and top left y                coordinates of the input field you wish to grab, and then the width and height of the area.The final string inside the brackets is used to define the              
-name of the output parameter a user wishes to store the text in.This will be stored in the attributes.screenOutput field of the mule message as a java              HashMap.Ex. [GET_SCREEN 9 10 10 3 output_test]<br>Defining when the user wants to run their python macro file is done by placing the text MACRO inside brackets.
- Ex. [MACRO]Input field text is defined by placing a string of whatever you wish to input into the comma seperated list.
-FULL EXAMPLE: "[enter],[enter],4,[SET_INFIELD 2 1],3,[enter],[enter]"|Required |null |as400.KeyString|
 |Input Parameters|Enter key-value pairs to replace pre-set variables (defined by placing a ':' before a variable name inside '< >' brackets corresponding to the key from the key-value pair) in the Key String.Ex. {"value": "4"} will replace :< value > in the Key String|Optional|null|as400.InputParameters|
 |Sink Target Topic|Push Response back to kafka topic after execute script operation|required|null|sink.kafka.topic|
 |Kafka Partition Key|Kafka Partition Key|Optional|null|sink.kafka.partition.key|

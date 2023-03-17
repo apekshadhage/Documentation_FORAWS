@@ -292,7 +292,7 @@ Below is a list of standard key codes and descriptions supported by the connecto
 |:--      |:--          |
 | [backspace] |Back Space|
 | [backtab]|Back Tab|
-|| [up]|Cursor Up|
+|[up]|Cursor Up|
 | [down]|Cursor Down|
 | [left]|Cursor Left|
 | [right]|Cursor Rignt|

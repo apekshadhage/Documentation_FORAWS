@@ -270,7 +270,7 @@ Based on protocol type needs to configure below properties
 | Protocols     | Parameters to configure                                   |Mandatory                    |configuration keys for parameters |
 |:--------------:|-----------------------------------------------------------|-----------------------------------|-----------------------------------|
 | FILE| path <br> filename                                                   | required <br>  required           |as400.MaroFilePath<br> as400.MacroFileName|
-| S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key    required<br>required<br>required<br>required<br>required|s3.bucket<br>as400.MacroFileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
+| S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key    |required<br>required<br>required<br>required<br>required|s3.bucket<br>as400.MacroFileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
 |CLASSPATH|filename|required|as400.MacroFileName|
 
 Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 

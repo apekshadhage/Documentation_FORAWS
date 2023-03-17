@@ -2,17 +2,17 @@
 
 # IBM i AS/400 RPA Sink Connector for Confluent Platform
 
-## Overview
+**Overview**
 
 Companies running their core Systems of Record on IBM i (formerly known as AS400 or iSeries) platform often find themselves at the mercy of their application vendors when it comes to integrating these applications or automating manual user actions. AS400 RPA Sink Connector for Confluent is a simple automation connector that runs directly as a kafka connect application and simulates green screen user actions such as navigation, data entry and screen capture.  
 
-## Use Cases
+# Use Cases
 
 There are several options for integrating and automating IBM i based applications. Robotic Process Automation (RPA) is a good fit for companies that only have access to the application via green screen UI and have limited capabilities integrating directly at application program or DB level. If users have to manually key in the data into legacy system this is a good opportunity to automate this step. 
 
 Another often overlooked scenario where RPA can help a lot is test automation. In many cases companies have to run through manual feature and regression testing every time the change is introduced. Automating this regression testing step could help improve the quality of the releases and reduce a risk of introducing the unintended changes in system behavior. 
 
-## Product Features
+# Product Features
 
 * Automates manual green screen operations and easily exposes legacy IBM i applications as modern APIs
 * Simulates green screen user actions directly from kafka applications
@@ -20,11 +20,11 @@ Another often overlooked scenario where RPA can help a lot is test automation. I
 * Supports simple python based script language for more advanced screen navigation logic
 * Supports TLS (encrypted) connections
 
-## License
+# License
 
 AS400 RPA Sink Connector for Confluent is offered under GPL 2 open source license. 
 
-## How does it work? 
+# How does it work? 
 
 Infoview's AS400 RPA Sink Connector is a simple kafka connect plug-in that opens IBM i telnet (5250) session, executes a sequence of user actions to navigate the screens, type the data into display fields, press function keys, read sections of the screen into the variables, etc. 
 
@@ -90,7 +90,7 @@ is intended to perform. The connector supports the following operations:
     
 -  **Steps to setup confluent kafka standalone environment in local system**
 
-      https://docs.confluent.io/5.5.0/quickstart/ce-quickstart.html
+      https://docs.confluent.io/6.0.0/quickstart/ce-quickstart.html
 
 -  **Steps to setup confluent kafka standalone environment in cloud**
 
@@ -107,9 +107,9 @@ once the confluent kafka install follows the below steps for connector installat
   
   -  **In Standalone mode**
 
-      1.  kafka-connect-as400 connector can be downloaded directly from the confluent-hub using 
+      1.  kafka-connect-as400-rpa connector can be downloaded directly from the confluent-hub using 
                                 
-                confluent-hub install infoviewsystems/kafka-connect-as400:1.1.1
+                confluent-hub install infoviewsystems/kafka-connect-as400-rpa:1.0.0
                 
       2.  Extract the content into the desired location (Preferred: /confluent/share/java or /confluent/share/confluent-hub-component)
           Generally it will install /confluent/share/confluent-hub-component location so no need to extract it manually.
@@ -129,17 +129,17 @@ once the confluent kafka install follows the below steps for connector installat
 
     1.  please find the predefine docker-compose.yml file
     
-	     https://github.com/infoviewsystems/as400-gateway-kafka-doc/blob/main/docker-compose.yml
+	https://github.com/infoviewsystems/as400-gateway-kafka-doc/blob/main/docker-compose.yml
 	       
-    2.	Check once the connect service from the above file for 
+    2.	Check once the connect service from the above file for If wanted to access macro file using FILE protocol
 
 		volumes:
 
-		/home/ubuntu/license/:/opt/
+		/home/ubuntu/macro/:/opt/
 
-		create license directory in local system (ex. mkdir license) and place the as400-license.lic file in the same directory.
+		create macro directory in local system (ex. mkdir macro) and place the python script file in the same directory.
 
-		while running docker-compose.yml file license file i.e as400-license.lic will copy from local to docker container path i.e /opt/.
+		while running docker-compose.yml file macro file ex. addItems.py will copy from local to docker container path i.e /opt/.
     
     3.	Now execute below command 
         
@@ -154,7 +154,7 @@ once the confluent kafka install follows the below steps for connector installat
 		![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
 
     
-    4.  To verify the license is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
+    4.  To verify the macro file is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
         
 		docker exec -it connect bash
 
@@ -164,21 +164,13 @@ once the confluent kafka install follows the below steps for connector installat
 		
 		ls -l
 
-		find the screenshot for reference
 
-		![image](https://user-images.githubusercontent.com/88314020/191203434-03ebdc39-d320-4c38-b9de-a595950f89fc.png)
-
-
-    5.  To verify the infoviewsystems-as400-kafka-connect is install or not go through below steps
+    5.  To verify the infoviewsystems-as400-kafka-connect-rpa is install or not go through below steps
          
 		 cd /usr/share/confluent-hub-components/ 
 		 
 		 ls -l
-		 
-		 find the screenshot for reference
-
-		 ![image](https://user-images.githubusercontent.com/88314020/191204410-9d57fe7d-b4ca-4d21-8b57-3238455b2468.png)
-
+		
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
@@ -195,7 +187,7 @@ The IBM i connector requires a macro file to execute operation on IBM i system(s
  **Macro File**
  
  Enter the name of the python macro file that was placed into the above mentioned location
- The session variables, which holds all information about the current session, can be referenced as '_session' in the python macro. It is placed into the script beforehand by the module.
+ The session variables, which holds all information about the current session, can be referenced as '_session' in the python macro. It is placed into the script   beforehand by the module.
 
 	
 1. FILE
@@ -316,7 +308,7 @@ Configure these connector properties.
   }
 }
 ```
-### Key names
+**Key names**
 Below is a list of standard key codes and descriptions supported by the connector. The keys must appear exactly as they are defined below, and each key or literal or variable or special command must be separated by the comma
 
 
@@ -383,7 +375,7 @@ Below is a list of standard key codes and descriptions supported by the connecto
 | [rollleft]|Roll Left|
 | [rollright]|Roll Right|
 
-### Special commands
+**Special commands**
 
 *[MACRO]* - execute Macro file. The Macro file name must be specified in the Macro File parameter. 
 
@@ -391,7 +383,7 @@ Below is a list of standard key codes and descriptions supported by the connecto
 
 *[GET_SCREEN x y length height variable-name]* - reads screen area rectangle starting with column x / row y, with the horizontal size of <length> characters, and vertical size of <height> characters. The output will be stored into the variable-name and passed back into Mule flow or script.
 
-### Parameter Mapping
+**Parameter Mapping**
 
 To set the value of the input fields dynamically, use the pattern :<variable-name> in the script, for example the below snippet positions the cursort to col 29 row 10, then inserts the content of variable "uri", then sends Enter key. 
 

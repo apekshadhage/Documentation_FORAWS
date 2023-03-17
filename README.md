@@ -6,7 +6,7 @@
 
 Companies running their core Systems of Record on IBM i (formerly known as AS400 or iSeries) platform often find themselves at the mercy of their application vendors when it comes to integrating these applications or automating manual user actions. AS400 RPA Sink Connector for Confluent is a simple automation connector that runs directly as a kafka connect application and simulates green screen user actions such as navigation, data entry and screen capture.  
 
-# Use Cases
+**Use Cases**
 
 There are several options for integrating and automating IBM i based applications. Robotic Process Automation (RPA) is a good fit for companies that only have access to the application via green screen UI and have limited capabilities integrating directly at application program or DB level. If users have to manually key in the data into legacy system this is a good opportunity to automate this step. 
 
@@ -45,7 +45,7 @@ The following two common use cases address the majority of IBM i integration req
 5. The output parameter will be stored in the payload of the module. It will be stored in a HashMap behind they key 'test_value'.
 
 
-# Product Features
+**Product Features**
 
 * Automates manual green screen operations and easily exposes legacy IBM i applications as modern APIs
 * Simulates green screen user actions directly from kafka applications
@@ -53,11 +53,11 @@ The following two common use cases address the majority of IBM i integration req
 * Supports simple python based script language for more advanced screen navigation logic
 * Supports TLS (encrypted) connections
 
-# License
+**License**
 
 AS400 RPA Sink Connector for Confluent is offered under GPL 2 open source license. 
 
-# How does it work? 
+**How does it work?**
 
 Infoview's AS400 RPA Sink Connector is a simple kafka connect plug-in that opens IBM i telnet (5250) session, executes a sequence of user actions to navigate the screens, type the data into display fields, press function keys, read sections of the screen into the variables, etc. 
 
@@ -67,7 +67,7 @@ The connection configuration includes the credentials and initial set of keystro
 
 The connector operation executes the script (a series of keystrokes, macro executions etc) then passess the resulting variables back to the kafka topic as a response. 
 
-**Introduction** 
+**Introduction**
 
 The purpose of As400 RPA connector is to enable IBM i (AS/400) integrations with other components.
 

@@ -184,8 +184,9 @@ once the confluent kafka install follows the below steps for connector installat
 		once downloading completed verify the status with below command is all services up and running
 
 		docker-compose ps -a
+	
 
-		![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
+	        ![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
 
     
     4.  To verify the macro file is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
@@ -263,6 +264,9 @@ The IBM i connector requires a macro file to execute operation on IBM i system(s
     It requires one value to aceess files from Classpath
     
 	a. filename
+	
+	![classpath](https://user-images.githubusercontent.com/88314020/225881404-2231513e-efa0-42d7-b560-9daabb72173d.png)
+
 		  
 
 Based on protocol type needs to configure below properties

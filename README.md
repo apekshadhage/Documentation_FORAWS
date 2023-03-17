@@ -47,11 +47,11 @@ The following two common use cases address the majority of IBM i integration req
 
 **Product Features**
 
-* Automates manual green screen operations and easily exposes legacy IBM i applications as modern APIs
-* Simulates green screen user actions directly from kafka applications
-* Focuses on one simple thing: automating user screen navigation and data entry for IBM i screen (tn5250) applications
-* Supports simple python based script language for more advanced screen navigation logic
-* Supports TLS (encrypted) connections
+- Automates manual green screen operations and easily exposes legacy IBM i applications as modern APIs
+- Simulates green screen user actions directly from kafka applications
+- Focuses on one simple thing: automating user screen navigation and data entry for IBM i screen (tn5250) applications
+- Supports simple python based script language for more advanced screen navigation logic
+- Supports TLS (encrypted) connections
 
 **License**
 
@@ -243,7 +243,7 @@ The IBM i connector requires a macro file to execute operation on IBM i system(s
 	
 	If the macro file wanted to access from  S3. Please find the screenshot for reference 
 		 
-	![image]()https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/s3.png
+	![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/s3.png)
 
 	It requires five values to access files from S3
 		  

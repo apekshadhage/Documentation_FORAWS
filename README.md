@@ -154,7 +154,8 @@ once the confluent kafka install follows the below steps for connector installat
       
       4.  Control center should be up and running and can be verified with http://{HOST}:9021
         
-      ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
+         ![connector-is-available](https://user-images.githubusercontent.com/88314020/225885597-a6655246-7275-406c-b6cc-b0d09d78321e.png)
+
       
       5.  Sink connector is ready to configure now. And here are the sample configurations to be used.
 
@@ -184,9 +185,6 @@ once the confluent kafka install follows the below steps for connector installat
 		once downloading completed verify the status with below command is all services up and running
 
 		docker-compose ps -a
-	
-
-	        ![image](https://user-images.githubusercontent.com/88314020/191201820-56c62361-3abb-48c5-8d8b-19b7a3d18530.png)
 
     
     4.  To verify the macro file is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode
@@ -209,7 +207,8 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-        ![image]  (https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
+      ![image](https://user-images.githubusercontent.com/88314020/225883802-4f0a23a3-ca26-44e6-91b0-09b76e4dd52f.png)
+
 
     7.  RPA Sink connector ready to configure now. And here are the sample configurations to be used. 
 
@@ -229,7 +228,7 @@ The IBM i connector requires a macro file to execute operation on IBM i system(s
 	
     find the attached screenshot for reference
 		
-	![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/file.png)
+	![file](https://user-images.githubusercontent.com/88314020/225884092-df89337a-a1d5-46d5-ac06-64fb800318eb.png)
 
 	It requires two values 
 		
@@ -245,7 +244,8 @@ The IBM i connector requires a macro file to execute operation on IBM i system(s
 	
 	If the macro file wanted to access from  S3. Please find the screenshot for reference 
 		 
-	![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/s3.png)
+	![s3](https://user-images.githubusercontent.com/88314020/225884282-139dde6a-e38f-499c-97ef-37c8fdf0d3ec.png)
+
 
 	It requires five values to access files from S3
 		  
@@ -303,7 +303,8 @@ Based on protocol type needs to configure below properties
 
 Configure these connector properties.
 
-![image]([https://user-images.githubusercontent.com/46368616/133767545-f4f0bf51-c9cb-4435-ac0f-04a5190f3502.png](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/Sink%20Parameters%20with%20writing%20response%20back%20params.png))
+![Sink-Parameters-with-writing-response-back-params](https://user-images.githubusercontent.com/88314020/225884458-d97bcbe4-c495-470d-999c-5a5e496f27e6.png)
+
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters|
 |---------------|-----------------------------------------------------------|-----------------------------------|-------------|---------------------------------|

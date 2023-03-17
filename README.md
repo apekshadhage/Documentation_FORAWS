@@ -150,7 +150,7 @@ once the confluent kafka install follows the below steps for connector installat
 
       3.  Start confluent control center using command “confluent local services start”
       
-      ![image](https://user-images.githubusercontent.com/46368616/133743614-0642b415-96c1-49c2-9501-507388935129.png)
+         ![image](https://user-images.githubusercontent.com/46368616/133743614-0642b415-96c1-49c2-9501-507388935129.png)
       
       4.  Control center should be up and running and can be verified with http://{HOST}:9021
         
@@ -208,7 +208,7 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-        ![image](https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
+        ![image] (https://bitbucket.org/infoviewsystems/docs.infoviewsystems.com/raw/8eac4575b5648231190d4563bd7c8f713a25d10a/docs/kafkaRPA/images/connector%20is%20available.png)
 
     7.  RPA Sink connector ready to configure now. And here are the sample configurations to be used. 
 

@@ -148,7 +148,7 @@ once the confluent kafka install follows the below steps for connector installat
       2.  Extract the content into the desired location (Preferred: /confluent/share/java or /confluent/share/confluent-hub-component)
           Generally it will install /confluent/share/confluent-hub-component location so no need to extract it manually.
 
-      3.  Start confluent control center using command “confluent local services start”
+      3.  Start confluent control center using command “confluent local services start
       
          ![image](https://user-images.githubusercontent.com/46368616/133743614-0642b415-96c1-49c2-9501-507388935129.png)
       
@@ -156,7 +156,6 @@ once the confluent kafka install follows the below steps for connector installat
         
          ![connector-is-available](https://user-images.githubusercontent.com/88314020/225885597-a6655246-7275-406c-b6cc-b0d09d78321e.png)
 
-      
       5.  Sink connector is ready to configure now. And here are the sample configurations to be used.
 
 
@@ -207,7 +206,7 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-      ![image](https://user-images.githubusercontent.com/88314020/225883802-4f0a23a3-ca26-44e6-91b0-09b76e4dd52f.png)
+        ![image](https://user-images.githubusercontent.com/88314020/225883802-4f0a23a3-ca26-44e6-91b0-09b76e4dd52f.png)
 
 
     7.  RPA Sink connector ready to configure now. And here are the sample configurations to be used. 

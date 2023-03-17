@@ -12,6 +12,36 @@ There are several options for integrating and automating IBM i based application
 
 Another often overlooked scenario where RPA can help a lot is test automation. In many cases companies have to run through manual feature and regression testing every time the change is introduced. Automating this regression testing step could help improve the quality of the releases and reduce a risk of introducing the unintended changes in system behavior. 
 
+The following two common use cases address the majority of IBM i integration requirements:
+
+User Executes a Key String to Perform an Operation.
+
+User Grabs Text off of the AS400/IBMi Screen.
+
+User Executes a Pre-Defined Python Macro Script.
+
+**User Executes a Key String to Perform an Operation**
+1.User enters "4,[enter],[enter],2,[enter],[enter],1,[enter],[enter],[SET_INFIELD 11 2],5,[enter],[enter]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes as if it the user were doing it themselves.
+
+**User Grabs Text off of the AS400/IBMi Screen**
+1.User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[GET_SCREEN 9 10 10 3 output_test]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes
+
+2.The Module will grab the test within the area beginning at upper left x-position 9, upper left y-position 10, with a width of 10, and a height of 3.
+
+3.The text will be stored in the output of the module in the attributes.screenOutput section. It will be stored in a HashMap behind they key 'output_test'.
+
+**User Executes a Pre-Defined Python Macro Script**
+1.User places a 'test.py' file inside the src/main/resources folder.
+
+2.User defines the file in the module by typing the name 'test.py' in the Macro File input field in the Execute Script module. They also define "test_value" as a string in the macro output parameters input field. This string corresponds to a variable in the 'test.py' file with the same name.
+
+3.User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[MACRO]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes
+
+4.The Module will execute the script once it reaches the MACRO keyword in the keystring.
+
+5.The output parameter will be stored in the payload of the module. It will be stored in a HashMap behind they key 'test_value'.
+
+
 # Product Features
 
 * Automates manual green screen operations and easily exposes legacy IBM i applications as modern APIs

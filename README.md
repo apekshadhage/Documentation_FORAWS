@@ -34,7 +34,7 @@ The following two common use cases address the majority of IBM i integration req
 
 **User Executes a Pre-Defined Python Macro Script**
 
-1. User places a 'test.py' file inside the src/main/resources folder.
+1. User places a 'test.py' in various location such as file path(ex. /home/ubuntu/macro/test.py) or export location as classpath or s3 location.
 
 2. User defines the file in the module by typing the name 'test.py' in the Macro File input field in the Execute Script module. They also define "test_value" as a string in the macro output parameters input field. This string corresponds to a variable in the 'test.py' file with the same name.
 
@@ -42,7 +42,7 @@ The following two common use cases address the majority of IBM i integration req
 
 4. The Module will execute the script once it reaches the MACRO keyword in the keystring.
 
-5. The output parameter will be stored in the payload of the module. It will be stored in a HashMap behind they key 'test_value'.
+5. The output parameter will be stored in the . It will be stored in a HashMap behind they key 'test_value'.
 
 
 **Product Features**
@@ -206,7 +206,7 @@ once the confluent kafka install follows the below steps for connector installat
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 
-    ![image](https://user-images.githubusercontent.com/88314020/225883802-4f0a23a3-ca26-44e6-91b0-09b76e4dd52f.png)
+    ![connector-is-available](https://user-images.githubusercontent.com/88314020/225886991-080201af-ce77-405d-a69e-fbe541cd28da.png)
 
 
     7.  RPA Sink connector ready to configure now. And here are the sample configurations to be used. 

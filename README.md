@@ -102,6 +102,7 @@ This document assumes you are familiar with Confluent Kafka, Kafka Connect and C
 -   Access to Confluent Kafka  
 
 **Compatibility Matrix**
+
 | Application/Service     | Version       |
 | ----------------------- |---------------|
 | Confluent Kafka         |6.0.0 or higher|
@@ -162,7 +163,7 @@ once the confluent kafka install follows the below steps for connector installat
 
     1.  please find the predefine docker-compose.yml file
     
-	https://github.com/infoviewsystems/as400-gateway-kafka-doc/blob/main/docker-compose.yml
+	  https://github.com/infoviewsystems/as400-gateway-kafka-doc/blob/main/docker-compose.yml
 	       
     2.	Check once the connect service from the above file for If wanted to access macro file using FILE protocol
 

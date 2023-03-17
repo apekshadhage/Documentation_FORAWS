@@ -342,6 +342,7 @@ Configure these connector properties.
 }
 ```
 **Key names**
+
 Below is a list of standard key codes and descriptions supported by the connector. The keys must appear exactly as they are defined below, and each key or literal or variable or special command must be separated by the comma
 
 
@@ -462,8 +463,7 @@ Python script example
 6. Retrieve newly generated order ID and status from the specified screen positions
 7. Return back to the Work with Orders screen to prepare for the next transaction
 
-
-
+	
 ## Schema Registry Configuration
 Schema Registry must be configured for Schema Converters to avoid problems with registration updated Schemas after updating Format File
 

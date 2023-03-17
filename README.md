@@ -486,6 +486,3 @@ docker-compose up -d
 ```
 Compatibility will define as **_NONE_** as default for new schemas
 
-## Contact Us
-
-[Contact us](http://www.infoviewsystems.com/contact-us) for connector pricing info, trial license, or support questions.

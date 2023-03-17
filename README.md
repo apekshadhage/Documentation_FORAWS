@@ -284,6 +284,127 @@ Configure these connector properties.
   }
 }
 ```
+### Key names
+Below is a list of standard key codes and descriptions supported by the connector. The keys must appear exactly as they are defined below, and each key or literal or variable or special command must be separated by the comma
+
+
+|Key Code | Description |
+|:--      |:--          |
+| [backspace] |Back Space|
+| [backtab]|Back Tab|
+|| [up]|Cursor Up|
+| [down]|Cursor Down|
+| [left]|Cursor Left|
+| [right]|Cursor Rignt|
+| [delete]|Delete|
+| [tab]|Tab|
+| [eof]|End of Field|
+| [eraseeof]|Erase EOF|
+| [erasefld]|Erase Field|
+| [insert]|Insert|
+| [home]|Home|
+| [keypad0]|Keypad 0|
+| [keypad1]|Keypad 1|
+| [keypad2]|Keypad 2|
+| [keypad3]|Keypad 3|
+| [keypad4]|Keypad 4|
+| [keypad5]|Keypad 5|
+| [keypad6]|Keypad 6|
+| [keypad7]|Keypad 7|
+| [keypad8]|Keypad 8|
+| [keypad9]|Keypad 9|
+| [keypad.]|Decimal|
+| [keypad,]|Comma|
+| [keypad-]|Keypad minus|
+| [fldext]|Field Exit|
+| [field+]|Field Plus|
+| [field-]|Field Minus|
+| [bof]|Beginning of Field|
+| [enter]|Enter|
+| [pf1]|F1|
+| [pf2]|F2|
+| [pf3]|F3|
+| [pf4]|F4|
+| [pf5]|F5|
+| [pf6]|F6|
+| [pf7]|F7|
+| [pf8]|F8|
+| [pf9]|F9|
+| [pf10]|F10|
+| [pf11]|F11|
+| [pf12]|F12|
+| [pf13]|F13|
+| [pf14]|F14|
+| [pf15]|F15|
+| [pf16]|F16|
+| [pf17]|F17|
+| [pf18]|F18|
+| [pf19]|F19|
+| [pf20]|F20|
+| [pf21]|F21|
+| [pf22]|F22|
+| [pf23]|F23|
+| [pf24]|F24|
+| [clear]|Clear|
+| [pgup]|Page Up|
+| [pgdown]|Page Down|
+| [rollleft]|Roll Left|
+| [rollright]|Roll Right|
+
+### Special commands
+
+*[MACRO]* - execute Macro file. The Macro file name must be specified in the Macro File parameter. 
+
+*[SET_INFIELD x y]* - positions the cursor to the input field at column x, row y
+
+*[GET_SCREEN x y length height variable-name]* - reads screen area rectangle starting with column x / row y, with the horizontal size of <length> characters, and vertical size of <height> characters. The output will be stored into the variable-name and passed back into Mule flow or script.
+
+### Parameter Mapping
+
+To set the value of the input fields dynamically, use the pattern :<variable-name> in the script, for example the below snippet positions the cursort to col 29 row 10, then inserts the content of variable "uri", then sends Enter key. 
+
+    [SET_INFIELD 29 10],:<uri>,[enter] 
+
+The variables must be defined in the Input Parameters section of the connector operation as a list of name and value pairs, for example the value of that variable is mapped to Mule flow value of customerId coming from the HTTP request:
+
+    #[{"uri":attributes.uriParams.customerId}]
+	
+	
+Python script example
+
+        from org.tn5250j.framework.tn5250 import Rect
+
+        print "--------------- tn5250j add items script start -------------"
+
+        textBox = Rect()
+        i = 9
+
+        for item in items:
+            field = _session.getScreen().getScreenFields().findByPosition(i-1, 2)
+            field.setString(str(item["ItemNo"]))
+            field = _session.getScreen().getScreenFields().findByPosition(i-1, 14)
+            field.setString(str(item["ItemName"]))
+            field = _session.getScreen().getScreenFields().findByPosition(i-1, 46)
+            field.setString(str(item["Quantity"]))
+            field = _session.getScreen().getScreenFields().findByPosition(i-1, 53)
+            field.setString(str(item["UnitPrice"]))
+            i = i + 1
+
+
+        _session.getScreen().sendKeys("[enter]") 
+        _session.getScreen().sendKeys("[enter]") 
+
+        print "---------------- tn5250j add items script end -------------"
+
+
+1. Connector executes a call to the order maintenance program and presses Enter.
+2. Connector sets the cursor to col 29 row 10, and types the value of the variable uri then presses Enter twice. 
+3. Connector sends F6 key event to navigate to new screen
+4. Once on the new screen, the connector executes Python macro, passing the Items object coming as macro Input parameters, and for each line item types the data into      appropriate input fields on the Add Order lines subfile and presses Enter
+5. After the order is entered, press F10 to create new order in the system
+6. Retrieve newly generated order ID and status from the specified screen positions
+7. Return back to the Work with Orders screen to prepare for the next transaction
+
 
 
 ## Schema Registry Configuration

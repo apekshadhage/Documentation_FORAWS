@@ -274,7 +274,6 @@ Based on protocol type needs to configure below properties
 | S3|S3 bucket path<br>filename<br>S3 region<br>Access key<br>Secret key    |required<br>required<br>required<br>required<br>required|s3.bucket<br>as400.MacroFileName<br>s3.region<br>s3.accessKey<br>s3.secretKey|
 |CLASSPATH|filename|required|as400.MacroFileName|
 
-Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
   
 ## AS400 RPA Connection Configuration Properties
 -  **Connection**
@@ -519,4 +518,7 @@ Then restart docker container with following command if needed to apply changes
 docker-compose up -d
 ```
 Compatibility will define as **_NONE_** as default for new schemas
+	
+	
+Please contact Infoview Systems Connector support team at **(734) 293-2160** and **(+91) 4042707110** or via email sales@infoviewsystems.com and     marketing@infoviewsystems.com 
 

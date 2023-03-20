@@ -184,6 +184,9 @@ once the confluent kafka install follows the below steps for connector installat
 		once downloading completed verify the status with below command is all services up and running
 
 		docker-compose ps -a
+		
+		![image](https://user-images.githubusercontent.com/88314020/226296566-8d03f363-6d82-4e46-9c89-bbcd018d3f9d.png)
+
 
     
     4.  To verify the macro file is copied to /opt/, execute the below command to connect with kafka connect service with interactive mode

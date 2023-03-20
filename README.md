@@ -198,6 +198,9 @@ once the confluent kafka install follows the below steps for connector installat
 		cd /opt/
 		
 		ls -l
+		
+		![image](https://user-images.githubusercontent.com/88314020/226298857-6b125cdf-7f77-405f-8494-2c3f2ea2cdda.png)
+
 
 
     5.  To verify the infoviewsystems-as400-kafka-connect-rpa is install or not go through below steps
@@ -205,7 +208,9 @@ once the confluent kafka install follows the below steps for connector installat
 		 cd /usr/share/confluent-hub-components/ 
 		 
 		 ls -l
-		
+		 
+		 ![image](https://user-images.githubusercontent.com/88314020/226299090-da1561fc-f262-4846-878f-36a176d99d69.png)
+	
      
     6.  Control center should be up and running and can be verified with http://{HOST}:9021 
 

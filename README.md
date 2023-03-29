@@ -1,6 +1,6 @@
 # User Manual
 
-# IBM i AS/400 RPA Sink Connector for Confluent Platform
+# IBM i (AS400, iSeries) RPA Sink Connector for Kafka Platform
 
 **Overview**
 

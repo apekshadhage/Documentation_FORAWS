@@ -4,29 +4,29 @@
 
 **Overview**
 
-Companies running their core Systems of Record on IBM i (formerly known as AS400 or iSeries) platform often find themselves at the mercy of their application vendors when it comes to integrating these applications or automating manual user actions. AS400 RPA Sink Connector for Confluent is a simple automation connector that runs directly as a kafka connect application and simulates green screen user actions such as navigation, data entry and screen capture.  
+Companies running their core Systems of Record on IBM i (AS400, iSeries) platform often find themselves at the mercy of their application vendors when it comes to integrating these applications or automating manual user actions. IBM i (AS400, iSeries) RPA Sink Connector for kafka is a simple automation connector that runs directly as a Kafka Connect application and simulates green screen user actions such as navigation, data entry and screen capture.  
 
 **Use Cases**
 
-There are several options for integrating and automating IBM i based applications. Robotic Process Automation (RPA) is a good fit for companies that only have access to the application via green screen UI and have limited capabilities integrating directly at application program or DB level. If users have to manually key in the data into legacy system this is a good opportunity to automate this step. 
+There are several options for integrating and automating IBM i (AS400, iSeries) based applications. Robotic Process Automation (RPA) is a good fit for companies that only have access to the application via green screen UI and have limited capabilities integrating directly at application program or DB level. If users have to manually key in the data into legacy system this is a good opportunity to automate this step. 
 
 Another often overlooked scenario where RPA can help a lot is test automation. In many cases companies have to run through manual feature and regression testing every time the change is introduced. Automating this regression testing step could help improve the quality of the releases and reduce a risk of introducing the unintended changes in system behavior. 
 
-The following two common use cases address the majority of IBM i integration requirements:
+The following two common use cases address the majority of IBM i (AS400, iSeries) integration requirements:
 
 - User Executes a Key String to Perform an Operation.
 
-- User Grabs Text off of the AS400/IBMi Screen.
+- User Grabs Text off of the IBM i (AS400, iSeries) Screen.
 
 - User Executes a Pre-Defined Python Macro Script.
 
 **User Executes a Key String to Perform an Operation**
 
-1. User enters "4,[enter],[enter],2,[enter],[enter],1,[enter],[enter],[SET_INFIELD 11 2],5,[enter],[enter]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes as if it the user were doing it themselves.
+1. User enters "4,[enter],[enter],2,[enter],[enter],1,[enter],[enter],[SET_INFIELD 11 2],5,[enter],[enter]" as the key string and the IBM i (AS400, iSeries) System will enter the strings presented and execute the keystrokes as if it the user were doing it themselves.
 
-**User Grabs Text off of the AS400/IBMi Screen**
+**User Grabs Text off of the IBM i (AS400, iSeries) Screen**
 
-1. User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[GET_SCREEN 9 10 10 3 output_test]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes
+1. User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[GET_SCREEN 9 10 10 3 output_test]" as the key string and the IBM i System will enter the strings presented and execute the keystrokes
 
 2. The Module will grab the test within the area beginning at upper left x-position 9, upper left y-position 10, with a width of 10, and a height of 3.
 
@@ -38,7 +38,7 @@ The following two common use cases address the majority of IBM i integration req
 
 2. User defines the file in the module by typing the name 'test.py' in the Macro File input field in the Execute Script module. They also define "test_value" as a string in the macro output parameters input field. This string corresponds to a variable in the 'test.py' file with the same name.
 
-3. User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[MACRO]" as the key string and the AS400/IBMi System will enter the strings presented and execute the keystrokes
+3. User enters "addlible muledemodk,[enter],addlible wtf400demo,[enter],[enter],call edtorder,[enter],[enter],[MACRO]" as the key string and the IBM i System will enter the strings presented and execute the keystrokes
 
 4. The Module will execute the script once it reaches the MACRO keyword in the keystring.
 
@@ -54,31 +54,22 @@ The following two common use cases address the majority of IBM i integration req
 - Supports TLS (encrypted) connections
 
 **License**
-
-AS400 RPA Sink Connector for Confluent is offered under GPL 2 open source license. 
+IBMi  RPA Sink Connector for Kafka is offered under GPL license. Infoview Systems, the company that developed this connector, offers commercial support for the product.
 
 **How does it work?**
 
-Infoview's AS400 RPA Sink Connector is a simple kafka connect plug-in that opens IBM i telnet (5250) session, executes a sequence of user actions to navigate the screens, type the data into display fields, press function keys, read sections of the screen into the variables, etc. 
+Infoview's IBM i RPA Sink Connector is a simple Kafka Connect plug-in that opens IBM i telnet (5250) session, executes a sequence of user actions to navigate the screens, type the data into display fields, press function keys, read sections of the screen into the variables, etc. 
 
-The connector works entirely within kafka connect application and does not require any other software to execute. 
+The connector works entirely within Kafka Connect application and does not require any other software to execute. 
 
 The connection configuration includes the credentials and initial set of keystrokes that every session will execute to get to the starting point in the screen navigation (for example navigate to Order Entry screen)
 
 The connector operation executes the script (a series of keystrokes, macro executions etc) then passess the resulting variables back to the kafka topic as a response. 
 
-**Introduction**
-
-The purpose of As400 RPA connector is to enable IBM i (AS/400) integrations with other components.
-
-The IBM AS/400 was first introduced in 1988 and evolved into a very stable modern all-purpose integrated solution that requires little or no management. The system is able to run core line of business applications securely and predictably, focusing on quality of service and availability and offering a compelling total cost of ownership for integrated on-premises solutions. IBM made several changes to the server and OS name (iSeries, System i, IBM i, Power Systems for i) but most still refer to it as AS/400.
-
-The IBM i platform offers a number of integration options including PHP, Java, WebSphere, specialized lightweight web service containers, FTP, SMTP / emails, DB2 interfaces, data queues, integrated file systems - IFS, as well as number of products offered by IBM and Third party vendors. The main benefit of using "native" options such as Program Calls and Data Queues is that IBM i development team does not have to learn another language or purchase and support another technology in order to build integration layer, and can easily communicate with external systems using only traditional development tools.
-
 **Prerequisites**
 
 The connector is designed to work with IBM i objects (e.g. programs and data queues) and therefore this document assumes you are familiar with IBM i operational and development environments and tools.
-This document assumes you are familiar with Confluent Kafka, Kafka Connect and Confluent Control Center and provides configuration examples and a detailed explanation of each and properties required to run the connector in Confluent Control Center.
+This document assumes you are familiar with Kafka, Kafka Connect and Confluent Control Center and provides configuration examples and a detailed explanation of each and properties required to run the connector in Confluent Control Center.
 
 **IBM i server configuration and requirements** 
 
@@ -99,12 +90,13 @@ This document assumes you are familiar with Confluent Kafka, Kafka Connect and C
 
 -   Access to IBM i server
 
--   Access to Confluent Kafka  
+-   Access to Kafka  
 
 **Compatibility Matrix**
 
 | Application/Service     | Version       |
 | ----------------------- |---------------|
+| Apache kafka            |2.6.0 or higher|
 | Confluent Kafka         |6.0.0 or higher|
 | Confluent Control Center|6.0.0 or higher|
 | IBM i / OS400           |V5R4 or higher |
@@ -113,7 +105,7 @@ This document assumes you are familiar with Confluent Kafka, Kafka Connect and C
 **Connector Operations** 
 
 The IBM i connector is an operation-based connector, which means that when you add the 
-connector to your Kafka connect cluster, you need to configure a specific operation the connector
+connector to your Kafka Connect cluster, you need to configure a specific operation the connector
 is intended to perform. The connector supports the following operations:
 
 | Operation                          | Description       |
@@ -133,9 +125,9 @@ is intended to perform. The connector supports the following operations:
 
 once the confluent kafka install follows the below steps for connector installation
             
-  **Install the AS400 Connector** 
+  **Install the IBM i Connector** 
 
-  Connectors are packaged as Kafka Connect plugins. Kafka connect isolates each plugin so that the 
+  Connectors are packaged as Kafka Connect plugins. Kafka Connect isolates each plugin so that the 
   plugin libraries do not conflict with each other. Download and extract the ZIP file for 
   your connector and then follow the below installation instructions.
   
@@ -223,7 +215,9 @@ once the confluent kafka install follows the below steps for connector installat
 
 ## Macro File Management:
 
-The IBM i connector requires a macro file to execute operation on IBM i system(s). Accessing file in different ways by using different protocols such as S3,FILE and CLASSPATH etc. and accessing it through these protocols in our application needs to configure in connector configuration. Available Protocols to load macro(python script) file (S3, FILE, CLASSPATH). Based on the protocol parameters needs to be configure.
+The connector MAY require macro file to automate more complex operations such as conditional processing and loops. 
+
+Accessing file in different ways by using different protocols such as S3,FILE and CLASSPATH etc. and accessing it through these protocols in our application needs to configure in connector configuration. Available Protocols to load macro(python script) file (S3, FILE, CLASSPATH). Based on the protocol parameters needs to be configure.
  
  **Macro File**
  
@@ -286,7 +280,7 @@ Based on protocol type needs to configure below properties
 |CLASSPATH|filename|required|as400.MacroFileName|
 
   
-## AS400 RPA Connection Configuration Properties
+## IBM i RPA Connection Configuration Properties
 -  **Connection**
 
 | Parameter     | Description                                               |Mandatory                          |Default Value|configuration keys for parameters |
@@ -295,7 +289,7 @@ Based on protocol type needs to configure below properties
 |User Name     |Enter your AS400 account user name for login.               |    Required                          |null|as400.username|
 |User Name X Position |The X position of the user name entry field at the login screen.|Required     |null|as400.usernameXPosition|
 |User Name Y Position |The Y position of the user name entry field at the login screen.|Required|null|as400.usernameYPosition|
-|Password|Enter your AS400 account password for login.|Required|null|as400.password|
+|Password|Enter your IBM i account password for login.|Required|null|as400.password|
 |Password X Position|The X position of the password entry field at the login screen.|Required|null|as400.passwordXPosition|
 |Password Y Position|The Y position of the password entry field at the login screen.|Required|null|as400.passwordYPosition|
 |Initial Key String|Enter an optional formatted key string to naviagte the AS400 to an ideal screen after login.|Optional|null|as400.initialKeyString|
@@ -303,10 +297,10 @@ Based on protocol type needs to configure below properties
 |Port|Enter the port number of your IBM i endpoint.|Optional|-1|as400.port|
 |SSL Type|Enter the SSL Type of your IBM i endpoint if it requires a secure connection.|Optional|None|as400.sslType|
 |Debug Mode|Enter either True or False. Entering true means that the connector will print the screen after any key is pressed. False means that it will not.|Optional|False|as400.debug|
-|Num Attempts|Number of connection retries internally within AS400 connector configuration before the exception is raised to kafka runtime and connection management.|Optional|1|as400.numAttempts|
+|Num Attempts|Number of connection retries internally within IBM i connector configuration before the exception is raised to kafka runtime and connection management.|Optional|1|as400.numAttempts|
 |Time Between Attempts (ms)|The amount of time inbetween connection retry attempts.|Optional|300|as400.TimeBetweenAttempts|
 
-## AS400 RPA Sink Connector Configuration Properties
+## IBM i RPA Sink Connector Configuration Properties
 
 Configure these connector properties.
 
